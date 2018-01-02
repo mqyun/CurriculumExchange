@@ -15,3 +15,9 @@ $(document).on('click', '.switch', function() {
   }
   $(this).parents('.misc-box').hide().siblings().show();
 });
+$(document).on('click', '.btn-teacher', function() {
+  alert('teacher');
+});
+$(document).on('click', '.btn-student', function() {
+  alert('student');
+});

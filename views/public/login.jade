@@ -27,7 +27,7 @@ html(lang='en')
               .misc-header.text-center(style='color: #fff;font-size: 18px;')
                 学生登录
               .misc-box
-                p.text-center.text-uppercase.pad-v.switch(style='cursor: pointer;') 切换到教师登录 >>>
+                p.text-center.text-uppercase.pad-v.switch(style='cursor: pointer;') 切换至教师登录 >>>
                 form(role='form')
                   .form-group
                     label.text-muted(for='exampleuser1') UserName
@@ -41,12 +41,12 @@ html(lang='en')
                       span.icon-lock.text-muted.icon-input
                   .clearfix
                     .pull-right
-                      button.btn.btn-block.btn-primary 登录
+                      button.btn.btn-block.btn-primary.btn-student 登录
                   hr
                   p.text-center 没有账号？
                   a.btn.btn-block.btn-default(href='/reg') 现在注册
               .misc-box(style='display: none')
-                p.text-center.text-uppercase.pad-v.switch(style='cursor: pointer;') 切换到学生登录 >>>
+                p.text-center.text-uppercase.pad-v.switch(style='cursor: pointer;') 切换至学生登录 >>>
                 form(role='form')
                   .form-group
                     label.text-muted(for='exampleuser1') UserName
@@ -60,7 +60,7 @@ html(lang='en')
                       span.icon-lock.text-muted.icon-input
                   .clearfix
                     .pull-right
-                      button.btn.btn-block.btn-primary 登录
+                      button.btn.btn-block.btn-primary.btn-teacher 登录
                   hr
                   p.text-center 没有账号？
                   a.btn.btn-block.btn-default(href='/reg') 现在注册
