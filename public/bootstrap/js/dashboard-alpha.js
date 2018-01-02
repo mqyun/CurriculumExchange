@@ -1,4 +1,4 @@
-/* 
+/*
  Dashboard alpha custom js file
  */
 $(document).ready(function () {
@@ -76,14 +76,14 @@ $(document).ready(function () {
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue'
     });
-    $.toast({
-        heading: 'Welcome back Emily',
-        text: 'A simple and easy to use bootstrap admin template',
-        position: 'top-right',
-        loaderBg: '#fff',
-        icon: 'success',
-        hideAfter: 3000,
-        stack: 1
-    });
+    // $.toast({
+    //     heading: '欢迎回来',
+    //     text: '这里是基于HTML5的网上课程交流与学习网站',
+    //     position: 'top-right',
+    //     loaderBg: '#fff',
+    //     icon: 'success',
+    //     hideAfter: 3000,
+    //     stack: 1
+    // });
 
 });

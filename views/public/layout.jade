@@ -1,0 +1,157 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/simple-line-icons.css', rel='stylesheet')
+    link(href='/bootstrap/css/font-awesome.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/pace.css', rel='stylesheet')
+    link(href='/bootstrap/css/jasny-bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/bootstrap/css/nanoscroller.css')
+    link(rel='stylesheet', href='/bootstrap/css/metismenu.min.css')
+    link(href='/bootstrap/css/c3.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/blue.css', rel='stylesheet')
+    link(href='/bootstrap/css/jquery.datatables.min.css', rel='stylesheet', type='text/css')
+    link(href='/bootstrap/css/responsive.bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='/bootstrap/css/jquery.toast.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/style.css', rel='stylesheet')
+    block css
+  body
+    // 上导航
+    .top-bar.light-top-bar
+      .container-fluid
+        .row
+          .col-xs-6
+            a.admin-logo(href='index.html')
+              h1(style='color:#000;') 课程交流
+                small (学生端)
+            .left-nav-toggle.visible-xs.visible-sm
+              a(href='')
+                i.glyphicon.glyphicon-menu-hamburger
+            .search-form.hidden-xs
+              form
+                input.form-control(type='text', placeholder='Search for...')
+                button.btn-search(type='button')
+                  i.fa.fa-search
+          .col-xs-6
+            ul.list-inline.top-right-nav
+              li.dropdown.hidden-xs.icon-dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.glyphicon.glyphicon-envelope
+                  span.badge.badge-warning 4
+                ul.dropdown-menu.top-dropdown.lg-dropdown.notification-dropdown
+                  li
+                    .dropdown-header
+                      a.pull-right.text-muted(href='#')
+                        small View All
+                      |  Messages
+                    .scrollDiv
+                      .notification-list
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            img.img-circle(src='/bootstrap/picture/avtar-2.jpg', alt='', width='50')
+                          span.notification-title
+                            | John Doe 
+                            label.label.label-primary.pull-right Office
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            img.img-circle(src='/bootstrap/picture/avtar-3.jpg', alt='', width='50')
+                          span.notification-title
+                            | Emily Doe  
+                            label.label.label-info.pull-right Marketing
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            img.img-circle(src='/bootstrap/picture/avtar-4.jpg', alt='', width='50')
+                          span.notification-title
+                            | Michael Clark 
+                            label.label.label-warning.pull-right Support
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            img.img-circle(src='/bootstrap/picture/avtar-5.jpg', alt='', width='50')
+                          span.notification-title
+                            | Ronaldo 
+                            label.label.label-success.pull-right Metting
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+              li.dropdown.hidden-xs.icon-dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.glyphicon.glyphicon-bell
+                  span.badge.badge-danger 6
+                ul.dropdown-menu.top-dropdown.lg-dropdown.notification-dropdown
+                  li
+                    .dropdown-header
+                      a.pull-right.text-muted(href='#')
+                        small View All
+                      |  Notifications
+                    .scrollDiv
+                      .notification-list
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            i.icon-cloud-upload.text-primary
+                          span.notification-title Upload Complete
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            i.icon-info.text-warning
+                          span.notification-title Storage Space low
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+                        a.clearfix(href='javascript: void(0);')
+                          span.notification-icon
+                            i.icon-check.text-success
+                          span.notification-title Project Task Complete 
+                          span.notification-description Praesent dictum nisl non est sagittis luctus.
+                          span.notification-time 40 minutes ago
+              li.dropdown.avtar-dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  img.img-circle(src='/bootstrap/picture/avtar-1.jpg', width='30', alt='')
+                ul.dropdown-menu.top-dropdown
+                  li
+                    a(href='javascript: void(0);')
+                      i.icon-bell
+                      |  Activities
+                  li
+                    a(href='javascript: void(0);')
+                      i.icon-user
+                      |  Profile
+                  li
+                    a(href='javascript: void(0);')
+                      i.icon-settings
+                      |  Settings
+                  li.divider
+                  li
+                    a(href='javascript: void(0);')
+                      i.icon-logout
+                      |  Logout
+    // 左导航
+    block leftnav
+    // 主体
+    block content
+
+    // JS引入
+    script(src='/bootstrap/js/jquery.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/pace.min.js')
+    script(src='/bootstrap/js/jasny-bootstrap.min.js')
+    script(src='/bootstrap/js/jquery.slimscroll.min.js')
+    script(src='/bootstrap/js/jquery.nanoscroller.min.js')
+    script(src='/bootstrap/js/metismenu.min.js')
+    script(src='/bootstrap/js/float-custom.js')
+    script(src='/bootstrap/js/d3.min.js')
+    script(src='/bootstrap/js/c3.min.js')
+    script(src='/bootstrap/js/icheck.min.js')
+    script(src='/bootstrap/js/jquery.datatables.min.js')
+    script(src='/bootstrap/js/datatables.responsive.min.js')
+    script(src='/bootstrap/js/jquery.toast.min.js')
+    script(src='/bootstrap/js/dashboard-alpha.js')
+    block js
