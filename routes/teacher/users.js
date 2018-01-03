@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var usermodel = require('../../models/student/usermodel');
+var usermodel = require('../../models/teacher/usermodel');
 
-// 学生注册
+// 教师注册
 router.post('/reg', function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;

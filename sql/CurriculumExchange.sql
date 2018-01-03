@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 2018-01-02 14:35:18
--- 服务器版本： 10.1.10-MariaDB
--- PHP Version: 7.0.2
+-- Host: 127.0.0.1
+-- Generation Time: 2018-01-03 09:58:26
+-- 服务器版本： 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `CurriculumExchange`
+-- Database: `curriculumexchange`
 --
 
 -- --------------------------------------------------------
@@ -139,6 +139,15 @@ CREATE TABLE `student` (
   `usertype` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- 转存表中的数据 `student`
+--
+
+INSERT INTO `student` (`id`, `username`, `password`, `name`, `classid`, `usertype`) VALUES
+(9, 'mht', '123456', '马化腾', 1, 0),
+(10, 'my', '123456', '马云', 1, 0),
+(11, 'lqd', '123456', '刘强东', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -153,6 +162,14 @@ CREATE TABLE `teacher` (
   `classid` int(10) NOT NULL,
   `usertype` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 转存表中的数据 `teacher`
+--
+
+INSERT INTO `teacher` (`id`, `username`, `password`, `name`, `classid`, `usertype`) VALUES
+(1, 'cx', '123456', '陈翔', 1, 1),
+(2, 'ryf', '123456', '阮一峰', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -255,12 +272,12 @@ ALTER TABLE `notice`
 -- 使用表AUTO_INCREMENT `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- 使用表AUTO_INCREMENT `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

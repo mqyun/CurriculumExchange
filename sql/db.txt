@@ -4,14 +4,14 @@
 	password	密码
 	name		教师姓名
 	classid		教师所属班级
-	usertype	用户类型
+	usertype	用户类型(1)
 学生表 (student)
 	id			学生id
 	username	账户名
 	password	密码
 	name		学生姓名
 	classid		学生所属班级
-	usertype	用户类型
+	usertype	用户类型(0)
 班级表 (class)
 	id			班级id
 	classname	班级名称

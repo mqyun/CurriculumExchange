@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var studentuser = require('./routes/student/users');
+var teacheruser = require('./routes/teacher/users');
 
 var app = express();
 
@@ -22,6 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/student', studentuser);
+app.use('/teacher', teacheruser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,7 +42,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('public/error');
 });
 
 module.exports = app;

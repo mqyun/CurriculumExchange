@@ -15,6 +15,9 @@ html(lang='en')
     link(rel='stylesheet', href='/bootstrap/css/metismenu.min.css')
     link(href='/bootstrap/css/blue.css', rel='stylesheet')
     link(href='/bootstrap/css/style.css', rel='stylesheet')
+    link(href='/CExchange/css/public/public.css', rel='stylesheet')
+    script(src='/bootstrap/js/html5shiv.min.js')
+    script(src='/bootstrap/js/respond.min.js')
     script(src='/CExchange/js/public/sweetalert.min.js')
     script(src='/CExchange/js/public/public.js')
     style(type='text/css').
@@ -28,26 +31,42 @@ html(lang='en')
           .row
             .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
               .misc-header.text-center(style='color: #fff;font-size: 18px;')
-                学生登录
+                学生注册
               .misc-box
-                p.text-center.text-uppercase.pad-v.switch(style='cursor: pointer;') 切换至教师登录 >>>
+                p.text-center.text-uppercase.pad-v.switch(style='cursor: pointer;') 切换至教师注册 >>>
                 form(role='form')
                   .form-group
-                    label.text-muted(for='exampleuser1') 账号
+                    label.text-muted 账户名
                     .group-icon
-                      input.form-control(type='text', placeholder='Username', name='username')
-                      span.icon-user.text-muted.icon-input
-                  .form-group
-                    label.text-muted(for='exampleInputPassword1') 密码
+                      input.form-control(type='text', placeholder='Enter UserName', name='username')
+                      span.icon-user-follow.text-muted.icon-input
+                  .form-group.group-icon
+                    label.text-muted 密码
                     .group-icon
-                      input.form-control(type='password', placeholder='Password', name='password')
+                      input.form-control(type='password', placeholder='Enter Password', name='password')
                       span.icon-lock.text-muted.icon-input
+                  .form-group.group-icon
+                    label.text-muted 重复密码
+                    .group-icon
+                      input.form-control(type='password', placeholder='Confirm Password', name='confirmpassword')
+                      span.icon-lock.text-muted.icon-input
+                  .form-group
+                    label.text-muted 真实姓名
+                    .group-icon
+                      input.form-control(type='text', placeholder='Enter name', name='name')
+                      span.icon-user-follow.text-muted.icon-input
+                  .form-group
+                    label.text-muted 所在班级
+                    .group-icon
+                      select.form-control.m-b(name='classid')
+                        each classitem in classList
+                          option(value= classitem.id)= classitem.classname
                   .clearfix
                     .pull-right
-                      input.btn.btn-block.btn-primary(type='button' value='登录')
+                      input.btn.btn-block.btn-primary.btn-reg(type='button' value='注册')
                   hr
-                  p.text-center 没有账号？
-                  a.btn.btn-block.btn-default(href='/reg') 现在注册
+                  p.text-center 已有账号?
+                  a.btn.btn-block.btn-default(href='/') 返回登录
     script(src='/bootstrap/js/jquery.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')
     script(src='/bootstrap/js/pace.min.js')
@@ -57,4 +76,4 @@ html(lang='en')
     script(src='/bootstrap/js/metismenu.min.js')
     script(src='/bootstrap/js/float-custom.js')
     script(src='/bootstrap/js/icheck.min.js')
-    script(src='/CExchange/js/public/login.js')
+    script(src='/CExchange/js/public/reg.js')
