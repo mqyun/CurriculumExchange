@@ -1,0 +1,52 @@
+extends ../public/layout
+
+block leftnav
+  aside.float-navigation.light-navigation
+    .nano
+      .nano-content
+        ul#menu.metisMenu.nav
+          li.active
+            a(href='javascript: void(0);', aria-expanded='true')
+              i.icon-home
+              |  我的班级
+              span.fa.arrow
+            ul.nav-second-level.nav(aria-expanded='true')
+              li
+                a(href='') 此处为所在班级
+              li
+                a(href='') 教学队伍
+          li
+            a(href='javascript: void(0);', aria-expanded='true')
+              i.icon-folder-alt
+              |  我的课程 
+              span.fa.arrow
+            ul.nav-second-level.nav(aria-expanded='true')
+              li
+                a(href='javascript: void(0);', aria-expanded='true')
+                  | 此处为课程名称
+                  span.fa.arrow
+                ul.nav-third-level.nav(aria-expanded='true')
+                  li
+                    a(href='javascript: void(0);') 课程介绍
+                  li
+                    a(href='javascript: void(0);') 教学内容
+                  li
+                    a(href='javascript: void(0);') 教学教法
+            li
+              a(href='javascript: void(0);', aria-expanded='true')
+                i.icon-handbag
+                |  课程资源 
+                span.fa.arrow
+              ul.nav-second-level.nav(aria-expanded='true')
+                li
+                  a(href='') 课程名称
+            li
+              a(href='javascript: void(0);', aria-expanded='true')
+                i.icon-handbag
+                |  论坛 
+                span.fa.arrow
+              ul.nav-second-level.nav(aria-expanded='true')
+                li
+                  a(href='') 查看论坛
+                li
+                  a(href='') 发帖

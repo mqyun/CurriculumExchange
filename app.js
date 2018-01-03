@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var studentuser = require('./routes/student/users');
@@ -22,6 +23,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  resave: true,
+  saveUninitialized: false,
+  secret: 'secret'
+}));
+app.use(function(req, res, next) {
+  // 用户属性
+  res.locals.usertype = req.session.usertype || '';
+  // 用户真实名字
+  res.locals.name = req.session.name || '';
+  // 用户的id
+  res.locals.uid = req.session.uid || '';
+  next();
+});
 
 app.use('/', index);
 app.use('/student', studentuser);

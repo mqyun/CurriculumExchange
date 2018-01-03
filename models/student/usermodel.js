@@ -1,7 +1,7 @@
 var db = require('../dboperation');
 
 module.exports = {
-  // 验证注册学生是否存在
+  // 验证学生
   selectUser: function(username, callback) {
     var sql = "select * from student where username = ?";
 		db.exec(sql, username, function(err, rows) {

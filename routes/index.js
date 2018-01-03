@@ -25,4 +25,12 @@ router.get('/reg', function(req, res, next) {
     });
   });
 })
+
+// 退出登录
+router.get('/logout', function(req, res) {
+    req.session.usertype = null;
+    req.session.name = null;
+    req.session.uid = null;
+    res.redirect('/');
+});
 module.exports = router;
