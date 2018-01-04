@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var usermodel = require('../../models/teacher/usermodel');
+var indexmodel = require('../../models/indexmodel');
 
 // 教师注册
 router.post('/reg', function(req, res, next) {
@@ -69,10 +70,32 @@ router.post('/login', function(req, res, next) {
 });
 
 // 教师端首页
-router.get('/home', function(req, res, next) {
-  res.render('teacher/home', {
-    title: '教师端首页',
-    homestyle: '(教师端)'
+router.get('/', function(req, res, next) {
+  var uid = req.session.uid;
+  var usertype = req.session.usertype;
+  indexmodel.getThisClass(uid, usertype, function(err, classData) {
+    if (err) {
+      res.json({
+        'error': err
+      });
+      return next(err);
+    }
+    usermodel.getThisCurriculum(uid, function(err, curriculumData) {
+      if (err) {
+        res.render('teacher/index', {
+          title: '教师端',
+          homestyle: '(教师端)',
+          classData: classData,
+          curriculumData: ''
+        });
+      }
+      res.render('teacher/index', {
+        title: '教师端',
+        homestyle: '(教师端)',
+        classData: classData,
+        curriculumData: curriculumData
+      });
+    });
   });
 });
 

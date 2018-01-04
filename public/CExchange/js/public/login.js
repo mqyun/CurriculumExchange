@@ -4,11 +4,6 @@ $(function() {
   if (isFromTeacherReg) {
     $('.switch').click();
   }
-  ajaxPost('/student/home/test', {}, function(result) {
-    if (result.success) {
-      console.log(result);
-    }
-  });
 });
 
 // 教师学生登录切换
@@ -48,9 +43,9 @@ $(document).on('click', '.btn-login', function() {
         showTips('success', '恭喜你!', result.success + ',即将跳转至首页~');
         setTimeout(function() {
             if (url == '/student/login') {
-              location = 'student/home';
+              location = '/student/';
             } else {
-              location = 'teacher/home';
+              location = '/teacher/';
             }
         }, 1500);
       }

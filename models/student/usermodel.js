@@ -22,7 +22,7 @@ module.exports = {
     });
   },
   // 获取当前用户所有课程
-	getThisCurriculum: function(classid, usertype, callback) {
+	getThisCurriculum: function(classid, callback) {
     var sql = "select id, name from curriculum where classid = ?";
     db.exec(sql, classid, function(err, rows) {
       if (err) {
@@ -30,5 +30,5 @@ module.exports = {
       }
       callback(err, rows);
     });
-	}
+	},
 }

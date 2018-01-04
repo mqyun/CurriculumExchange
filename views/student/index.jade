@@ -12,34 +12,36 @@ block leftnav
               span.fa.arrow
             ul.nav-second-level.nav(aria-expanded='true')
               each classitem in classData
-                li
-                  a(href='' data-classid= classitem.classid)= classitem.classname
+                li(data-classid= classitem.classid)
+                  a(href='javascript: void(0);')= classitem.classname
           li
             a(href='javascript: void(0);', aria-expanded='true')
               i.icon-folder-alt
               |  我的课程
               span.fa.arrow
             ul.nav-second-level.nav(aria-expanded='true')
-              li
-                a(href='javascript: void(0);', aria-expanded='true')
-                  | 此处为课程名称
-                  span.fa.arrow
-                ul.nav-third-level.nav(aria-expanded='true')
-                  li
-                    a(href='javascript: void(0);') 课程介绍
-                  li
-                    a(href='javascript: void(0);') 教学内容
-                  li
-                    a(href='javascript: void(0);') 教学教法
+              each curriculumitem in curriculumData
+                li(data-curriculumid= curriculumitem.id)
+                  a(href='javascript: void(0);', aria-expanded='true')
+                    = curriculumitem.name
+                    span.fa.arrow
+                  ul.nav-third-level.nav(aria-expanded='true')
+                    li
+                      a(href='javascript: void(0);') 课程介绍
+                    li
+                      a(href='javascript: void(0);') 教学内容
+                    li
+                      a(href='javascript: void(0);') 教学教法
             li
               a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  课程资源
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
-                li
-                  a(href='') 课程名称
+                each curriculumitem in curriculumData
+                  li(data-curriculumid= curriculumitem.id)
+                    a(href='javascript: void(0);')= curriculumitem.name
             li
-              a(href='')
+              a(href='javascript: void(0);')
                 i.icon-handbag
                 |  论坛

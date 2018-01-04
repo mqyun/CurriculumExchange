@@ -20,7 +20,7 @@ module.exports = {
 			sql = "select class.id as classid, class.classname from class,teacher where teacher.id = ? and teacher.classid = class.id";
 		}
 		console.log(sql);
-		db.exec(sql, id, function(err, rows) {
+		db.exec(sql, uid, function(err, rows) {
 			if (err) {
 				callback(err);
 			}

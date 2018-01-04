@@ -11,10 +11,9 @@ block leftnav
               |  我的班级
               span.fa.arrow
             ul.nav-second-level.nav(aria-expanded='true')
-              li
-                a(href='') 此处为所在班级
-              li
-                a(href='') 班级管理
+              each classitem in classData
+                li.manage-class(data-classid= classitem.classid)
+                  a(href='javascript: void(0);')= classitem.classname
           li
             a(href='javascript: void(0);', aria-expanded='true')
               i.icon-folder-alt
@@ -24,27 +23,29 @@ block leftnav
               li
                 a(href='javascript: void(0);', aria-expanded='true')
                   | 添加课程
-              li
-                a(href='javascript: void(0);', aria-expanded='true')
-                  | 此处为课程名称
-                  span.fa.arrow
-                ul.nav-third-level.nav(aria-expanded='true')
-                  li
-                    a(href='javascript: void(0);') 课程介绍
-                  li
-                    a(href='javascript: void(0);') 教学内容
-                  li
-                    a(href='javascript: void(0);') 教学教法
+              each curriculumitem in curriculumData
+                li(data-curriculumid= curriculumitem.id)
+                  a(href='javascript: void(0);', aria-expanded='true')
+                    = curriculumitem.name
+                    span.fa.arrow
+                  ul.nav-third-level.nav(aria-expanded='true')
+                    li
+                      a(href='javascript: void(0);') 课程介绍
+                    li
+                      a(href='javascript: void(0);') 教学内容
+                    li
+                      a(href='javascript: void(0);') 教学教法
             li
               a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  课程资源 
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
-                li
-                  a(href='') 课程名称
+                each curriculumitem in curriculumData
+                  li(data-curriculumid= curriculumitem.id)
+                    a(href='javascript: void(0);')= curriculumitem.name
             li
-              a(href='')
+              a(href='javascript: void(0);')
                 i.icon-handbag
                 |  论坛 
             li
@@ -54,9 +55,9 @@ block leftnav
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
                 li
-                  a(href='') 发布作业
+                  a(href='javascript: void(0);') 发布作业
                 li
-                  a(href='') 查看往期作业
+                  a(href='javascript: void(0);') 查看往期作业
             li
               a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
@@ -64,6 +65,12 @@ block leftnav
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
                 li
-                  a(href='') 发布公告
+                  a(href='javascript: void(0);') 发布公告
                 li
-                  a(href='') 查看往期公告
+                  a(href='javascript: void(0);') 查看往期公告
+
+block content
+  section.main-content
+
+block js
+  script(src='/CExchange/js/teacher/teacher.js')

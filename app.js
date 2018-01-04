@@ -7,8 +7,11 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var index = require('./routes/index');
+
 var studentuser = require('./routes/student/users');
+
 var teacheruser = require('./routes/teacher/users');
+var teachermanage = require('./routes/teacher/manage');
 
 var app = express();
 
@@ -40,8 +43,11 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', index);
+
 app.use('/student', studentuser);
+
 app.use('/teacher', teacheruser);
+app.use('/teachermanage', teachermanage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

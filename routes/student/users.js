@@ -70,21 +70,31 @@ router.post('/login', function(req, res, next) {
 });
 
 // 学生端首页
-router.get('/home', function(req, res, next) {
-  var id = req.session.uid;
+router.get('/', function(req, res, next) {
+  var uid = req.session.uid;
   var usertype = req.session.usertype;
-  indexmodel.getThisClass(id, usertype, function(err, classData) {
+  indexmodel.getThisClass(uid, usertype, function(err, classData) {
     if (err) {
-      res.render('student/home', {
-        title: '学生端首页',
-        homestyle: '(学生端)',
-        classData: ''
+      res.json({
+        'error': err
       });
+      return next(err);
     }
-    res.render('student/home', {
-      title: '学生端首页',
-      homestyle: '(学生端)',
-      classData: classData
+    usermodel.getThisCurriculum(classData[0].classid, function(err, curriculumData) {
+      if (err) {
+        res.render('student/index', {
+          title: '学生端',
+          homestyle: '(学生端)',
+          classData: classData,
+          curriculumData: ''
+        });
+      }
+      res.render('student/index', {
+        title: '学生端',
+        homestyle: '(学生端)',
+        classData: classData,
+        curriculumData: curriculumData
+      });
     });
   });
 });

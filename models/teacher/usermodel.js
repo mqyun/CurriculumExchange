@@ -21,4 +21,14 @@ module.exports = {
       callback(err);
     });
   },
+  // 获取当前用户所有课程
+	getThisCurriculum: function(teacherid, callback) {
+    var sql = "select id, name from curriculum where teacherid = ?";
+    db.exec(sql, teacherid, function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
+	},
 }
