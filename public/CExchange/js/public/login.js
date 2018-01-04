@@ -4,6 +4,11 @@ $(function() {
   if (isFromTeacherReg) {
     $('.switch').click();
   }
+  ajaxPost('/student/home/test', {}, function(result) {
+    if (result.success) {
+      console.log(result);
+    }
+  });
 });
 
 // 教师学生登录切换
