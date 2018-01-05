@@ -1,46 +1,51 @@
 .page-header
-	.row
-		.col-sm-6
-			h4= pageHeaderTit
+  .row
+    .col-sm-6
+      h4= pageHeaderTit
+        small.pageHeaderClassName
 .row
-	.col-md-6
-		.panel.panel-default
-			.panel-heading 教学队伍
-			.panel-body
-				.tabs.left-tabs
-					ul.list-unstyled.tabs-nav.tabs-bottom(role='tablist')
-						- var i = 0;
-						each teamItem in teamData
-							- if (i == 0)
-								li.active(role='presentation')
-									a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamItem.teacherName
-							- else
-								li(role='presentation')
-									a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamItem.teacherName
-							- i++
-					- var j = 0;
-					each teamItem in teamData
-						- if (j == 0)
-							.tab-content
-								.tab-pane.active(role='tabpanel', id='t'+j)= teamItem.introduce
-						- else
-							.tab-content
-								.tab-pane(role='tabpanel', id='t'+j)= teamItem.introduce
-						- j++
-	.col-md-6
-		.panel.panel-default.collapsed
-			.panel-heading 班级学生列表
-			.panel-body
-				table.table.table-striped
-					thead
-						tr
-							th #
-							th 账号
-							th 密码
-							th 姓名
-					tbody
-						tr
-							td 1
-							td username
-							td password
-							td name
+  .col-md-6
+    .panel.panel-default
+      .panel-heading 教学队伍
+      .panel-body
+        .tabs.left-tabs
+          ul.list-unstyled.tabs-nav.tabs-bottom(role='tablist')
+            - for (var i in teamData)
+              - if (i == 0)
+                li.active(role='presentation')
+                  a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamData[i].teacherName
+              - else
+                li(role='presentation')
+                  a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamData[i].teacherName
+          .tab-content
+            - for (var j in teamData)
+              - if (j == 0)
+                .tab-pane.active(role='tabpanel', id='t'+j)
+                  h4 教授课程：
+                    = teamData[j].curriculumName
+                  strong 课程简介：
+                  = teamData[j].introduce
+              - else
+                .tab-pane(role='tabpanel', id='t'+j)
+                  h4 教授课程：
+                    = teamData[j].curriculumName
+                  strong 课程简介：
+                  = teamData[j].introduce
+  .col-md-6
+    .panel.panel-default.collapsed
+      .panel-heading 班级学生列表
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th #
+              th 账号
+              th 密码
+              th 姓名
+          tbody
+            each studentitem in studentData
+              tr
+                td= studentitem.id
+                td= studentitem.username
+                td= studentitem.password
+                td= studentitem.name

@@ -11,4 +11,14 @@ module.exports = {
 			callback(err, rows);
 		});
 	},
+  // 获取班级学生列表
+	getAllStudent: function(classid, callback) {
+		var sql = "select * from student where classid = ?";
+		db.exec(sql, classid, function(err, rows) {
+			if (err) {
+				callback(err);
+			}
+			callback(err, rows);
+		});
+	}
 }

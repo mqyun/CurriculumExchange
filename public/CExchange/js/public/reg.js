@@ -14,6 +14,13 @@ $(document).on('click', '.switch', function() {
   }
 });
 
+// 绑定enter
+$(document).keydown(function(event) {
+  if (event.keyCode == 13) {
+    $('.btn-reg').click();
+  }
+});
+
 // 注册
 $(document).on('click', '.btn-reg', function() {
   var username = $("input[name='username']").val();

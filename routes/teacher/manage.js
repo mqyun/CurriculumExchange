@@ -11,14 +11,24 @@ router.post('/class', function(req, res, next) {
 			res.json({
 				'error': err
 			});
+			return next(err);
 		}
-		res.render('teacher/_ClassManagement', {
-			pageHeaderTit: '班级管理',
-			teamData: teamData
-		}, function(err, html) {
-			res.json({
-				'success': true,
-				'view': html
+		managemodel.getAllStudent(classid, function(err, studentData) {
+			if (err) {
+				res.json({
+					'error': err
+				});
+				return next(err);
+			}
+			res.render('teacher/_ClassManagement', {
+				pageHeaderTit: '班级管理',
+				teamData: teamData,
+				studentData: studentData
+			}, function(err, html) {
+				res.json({
+					'success': true,
+					'view': html
+				});
 			});
 		});
 	});

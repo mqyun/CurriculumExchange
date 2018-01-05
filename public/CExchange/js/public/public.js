@@ -59,3 +59,23 @@ function getFromUrl(key) {
 	}
 	return '';
 }
+function alertModel() {
+	var pre = document.createElement('pre');
+  pre.style.maxHeight = "400px";
+  pre.style.margin = "0";
+  pre.style.padding = "24px";
+  pre.style.whiteSpace = "pre-wrap";
+  pre.style.textAlign = "justify";
+  pre.appendChild(document.createTextNode($('#la').text()));
+  alertify.confirm(pre, function() {
+    alertify.success('Accepted');
+  }, function() {
+    alertify.error('Declined');
+  }).set({
+    labels: {
+      ok: 'Accept',
+      cancel: 'Decline'
+    },
+    padding: false
+  });
+}

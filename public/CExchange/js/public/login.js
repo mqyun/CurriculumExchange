@@ -18,6 +18,13 @@ $(document).on('click', '.switch', function() {
   }
 });
 
+// 绑定enter
+$(document).keydown(function(event) {
+  if (event.keyCode == 13) {
+    $('.btn-login').click();
+  }
+});
+
 // 登录
 $(document).on('click', '.btn-login', function() {
   var username = $("input[name='username']").val();
@@ -42,11 +49,11 @@ $(document).on('click', '.btn-login', function() {
       if (result.success) {
         showTips('success', '恭喜你!', result.success + ',即将跳转至首页~');
         setTimeout(function() {
-            if (url == '/student/login') {
-              location = '/student/';
-            } else {
-              location = '/teacher/';
-            }
+          if (url == '/student/login') {
+            location = '/student/';
+          } else {
+            location = '/teacher/';
+          }
         }, 1500);
       }
     });

@@ -99,15 +99,4 @@ router.get('/', function(req, res, next) {
   });
 });
 
-// 测试请求分布视图
-router.post('/home/test', function(req, res, next) {
-  res.render('student/test', {
-		testcon: 'aaadddbbb'
-	}, function(err, html) {
-    res.json({
-			'success': html
-		});
-  });
-});
-
 module.exports = router;

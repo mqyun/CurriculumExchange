@@ -19,6 +19,9 @@ html
     link(href='/bootstrap/css/responsive.bootstrap.min.css', rel='stylesheet', type='text/css')
     link(href='/bootstrap/css/jquery.toast.min.css', rel='stylesheet')
     link(href='/bootstrap/css/style.css', rel='stylesheet')
+    link(href='/CExchange/css/public/public.css', rel='stylesheet')
+    link(href='/bootstrap/css/alertify.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/alertify-bootstrap.min.css', rel='stylesheet')
     script(src='/bootstrap/js/jquery.min.js')
     block css
   body
@@ -27,7 +30,7 @@ html
       .container-fluid
         .row
           .col-xs-6
-            a.admin-logo(href='index.html')
+            a.admin-logo(href='javascript: void(0);')
               h1(style='color:#000;') 课程交流
                 small= homestyle
             .left-nav-toggle.visible-xs.visible-sm
@@ -147,6 +150,8 @@ html
     script(src='/bootstrap/js/datatables.responsive.min.js')
     script(src='/bootstrap/js/jquery.toast.min.js')
     script(src='/bootstrap/js/dashboard-alpha.js')
+    script(src='/bootstrap/js/alertify.min.js')
+    script(src='/bootstrap/js/alertify.custom.js')
     script(src='/CExchange/js/public/sweetalert.min.js')
     script(src='/CExchange/js/public/public.js')
     block js
