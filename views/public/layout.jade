@@ -25,6 +25,20 @@ html
     script(src='/bootstrap/js/jquery.min.js')
     block css
   body
+    // 模态层
+    #public-modal
+      .public-modalbg
+      .public-dialog
+        .pdig-header
+          .pdig-headertit header
+          span.pdig-close ×
+        .pdig-body
+        .pdig-footer
+          button.pdig-btn.pdig-btncancel cancel
+          button.pdig-btn.pdig-btnok ok
+          .clear
+    // 自定义层
+    block modal
     // 上导航
     .top-bar.light-top-bar
       .container-fluid

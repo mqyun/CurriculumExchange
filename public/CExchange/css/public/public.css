@@ -20,3 +20,86 @@
 .clear {
   clear: both;
 }
+
+#public-modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+#public-modal .public-modalbg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+}
+
+#public-modal .public-dialog {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  margin-left: -300px;
+  width: 600px;
+  min-height: 187px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  border-radius: 6px;
+  z-index: 2001;
+}
+
+#public-modal .pdig-header {
+  height: 55px;
+  line-height: 55px;
+  padding: 0 35px 0 30px;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 6px 6px 0 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+
+#public-modal .pdig-headertit {
+  float: left;
+}
+
+#public-modal .pdig-close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#public-modal .pdig-body {
+  min-height: 56px;
+  padding: 30px 10px 15px 10px;
+}
+
+#public-modal .pdig-footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 15px;
+  align-items: center;
+}
+
+#public-modal .pdig-btn {
+  float: right;
+  margin: 4px;
+  min-width: 88px;
+  min-height: 35px;
+  color: #fff;
+  border: none;
+}
+
+#public-modal .pdig-btnok {
+  background: #23b7e5;
+}
+
+#public-modal .pdig-btncancel {
+  color: #999;
+}
+
+textarea {
+  resize: vertical;
+}

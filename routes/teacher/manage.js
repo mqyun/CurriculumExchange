@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var managemodel = require('../../models/teacher/manage');
+var usermodel = require('../../models/teacher/usermodel');
+var managemodel = require('../../models/teacher/managemodel');
 
 // 教师端请求班级管理
 router.post('/class', function(req, res, next) {
@@ -47,7 +48,44 @@ router.post('/curriculumcon', function(req, res, next) {
 				'view': html
 			})
 		});
-	})
+	});
+});
+
+// 添加课程
+router.post('/addCurriculum', function(req, res, next) {
+	var name = req.body.name;
+	var introduce = req.body.introduce;
+	var coursescon = req.body.coursescon;
+	var coursesmet = req.body.coursesmet;
+	var teacherid = req.session.uid;
+	var classid = req.body.classid;
+	managemodel.addCurriculum(name, introduce, coursescon, coursesmet, teacherid, classid, function(err) {
+		if (err) {
+			res.json({
+				'error': err
+			});
+			return next(err);
+		}
+		res.json({
+			'success': '添加课程成功'
+		});
+	});
+});
+
+// 添加课程之后重新获取当前用户课程列表
+router.post('/reGetCurriculum', function(req, res, next) {
+	var teacherid = req.session.uid;
+	usermodel.getThisCurriculum(teacherid, function(err, rows) {
+		if (err) {
+			res.json({
+				'error': err
+			});
+		}
+		res.json({
+			'success': true,
+			'curriculumList': rows
+		});
+	});
 });
 
 module.exports = router;

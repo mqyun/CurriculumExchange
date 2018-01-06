@@ -21,9 +21,9 @@ module.exports = {
 			callback(err, rows);
 		});
 	},
-	// 获取课程内容
+	// 获取课程内容以及所属班级
 	getCurriculumCon: function(curriculumid, callback) {
-		var sql = "select * from curriculum where id = ?";
+		var sql = "select *, class.id as reaclassid, curriculum.id as curriculumid from curriculum, class where curriculum.id = ? and curriculum.classid = class.id";
 		db.exec(sql, curriculumid, function(err, rows) {
 			if (err) {
 				callback(err);

@@ -5,7 +5,9 @@
 .row
 	.col-md-12
 		.panel.panel-default
-			.panel-heading
+			.panel-heading= curriculumCon.name
+				small ---所属班级: 
+					= curriculumCon.classname
 			.panel-body
 				.tabs
 					ul.list-inline.tabs-nav(role='tablist')
