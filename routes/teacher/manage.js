@@ -34,4 +34,20 @@ router.post('/class', function(req, res, next) {
 	});
 });
 
+// 获取课程内容
+router.post('/curriculumcon', function(req, res, next) {
+	var curriculumId = req.body.curriculumId;
+	managemodel.getCurriculumCon(curriculumId, function(err, curriculumCon) {
+		res.render('teacher/_CurriculumContent', {
+			pageHeaderTit: '课程详情',
+			curriculumCon: curriculumCon[0]
+		}, function(err, html) {
+			res.json({
+				'success': true,
+				'view': html
+			})
+		});
+	})
+});
+
 module.exports = router;

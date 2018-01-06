@@ -20,5 +20,45 @@ module.exports = {
 			}
 			callback(err, rows);
 		});
-	}
+	},
+	// 获取课程内容
+	getCurriculumCon: function(curriculumid, callback) {
+		var sql = "select * from curriculum where id = ?";
+		db.exec(sql, curriculumid, function(err, rows) {
+			if (err) {
+				callback(err);
+			}
+			callback(err, rows);
+		});
+	},
+	// 添加课程
+	addCurriculum: function(name, introduce, coursescon, coursesmet, teacherid, classid, callback) {
+		var sql = "insert into curriculum(name, introduce, coursescon, coursesmet, teacherid, classid) values(?,?,?,?,?,?)";
+		db.exec(sql, [name, introduce, coursescon, coursesmet, teacherid, classid], function(err) {
+			if (err) {
+				callback(err);
+			}
+			callback(err);
+		})
+	},
+	// 布置作业
+	addAssignment: function(content, userid, classid, callback) {
+		var sql = "insert into assignment(content, userid, classid) values(?,?,?)";
+		db.exec(sql, [content, userid, classid], function(err) {
+			if (err) {
+				callback(err);
+			}
+			callback(err);
+		});
+	},
+	// 查看往期作业
+	getAllAssignment: function(userid, callback) {
+		var sql = "select * from assignment where userid = ?";
+		db.exec(sql, userid, function(err, rows) {
+			if (err) {
+				callback(err);
+			}
+			callback(err, rows);
+		});
+	},
 }

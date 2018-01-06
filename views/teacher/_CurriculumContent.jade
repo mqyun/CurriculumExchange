@@ -1,0 +1,21 @@
+.page-header
+	.row
+		.col-sm-6
+			h4= pageHeaderTit
+.row
+	.col-md-12
+		.panel.panel-default
+			.panel-heading
+			.panel-body
+				.tabs
+					ul.list-inline.tabs-nav(role='tablist')
+						li.active(role='presentation')
+							a(href='#introduce', aria-controls='home', role='tab', data-toggle='tab') 课程介绍
+						li(role='presentation')
+							a(href='#coursescon', aria-controls='profile', role='tab', data-toggle='tab') 教学内容
+						li(role='presentation')
+							a(href='#coursesmet', aria-controls='messages', role='tab', data-toggle='tab') 教学教法
+					.tab-content
+						#introduce.tab-pane.active(role='tabpanel')= curriculumCon.introduce
+						#coursescon.tab-pane(role='tabpanel')= curriculumCon.coursescon
+						#coursesmet.tab-pane(role='tabpanel')= curriculumCon.coursesmet
