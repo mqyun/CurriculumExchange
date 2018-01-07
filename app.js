@@ -23,23 +23,45 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  resave: true,
-  saveUninitialized: false,
-  secret: 'secret'
+	resave: true,
+	saveUninitialized: false,
+	secret: 'secret'
 }));
 app.use(function(req, res, next) {
-  // 用户属性
-  res.locals.usertype = req.session.usertype || '';
-  // 用户真实名字
-  res.locals.name = req.session.name || '';
-  // 用户的id
-  res.locals.uid = req.session.uid || '';
-  next();
+	// 用户属性
+	res.locals.usertype = req.session.usertype || '';
+	// 用户真实名字
+	res.locals.name = req.session.name || '';
+	// 用户的id
+	res.locals.uid = req.session.uid || '';
+	next();
+});
+
+app.use(function(req, res, next) {
+	if (req.session.uid == '' || req.session.uid == null) {
+		if (req.url == '/teacher' || req.url == '/student' || req.url == '/forum') {
+			res.redirect('/');
+		} else {
+			next();
+		}
+	} else if (req.session.uid != '' || req.session.uid != null) {
+		if (req.url == '/' || req.url == '/reg') {
+			if (req.session.usertype == 0) {
+				res.redirect('/student');
+			} else {
+				res.redirect('/teacher');
+			}
+		} else {
+			next();
+		}
+	}
 });
 
 app.use('/', index);
@@ -51,20 +73,20 @@ app.use('/teachermanage', teachermanage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('public/error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('public/error');
 });
 
 module.exports = app;

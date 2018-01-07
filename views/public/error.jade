@@ -1,7 +1,38 @@
-extends layout
-
-block content
-  .error(style='margin-top:240px;')
-    h1= message
-    h2= error.status
-    pre #{error.stack}
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title= error.status
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/simple-line-icons.css', rel='stylesheet')
+    link(href='/bootstrap/css/font-awesome.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/pace.css', rel='stylesheet')
+    link(href='/bootstrap/css/jasny-bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/bootstrap/css/nanoscroller.css')
+    link(rel='stylesheet', href='/bootstrap/css/metismenu.min.css')
+    link(href='/bootstrap/css/style.css', rel='stylesheet')
+    style(type='text/css').
+      html,body{
+        height: 100%;
+      }
+  body
+    .misc-wrapper
+      .misc-content
+        .container
+          .row
+            .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
+              .misc-box.text-center
+                h1= error.status
+                h4= message
+                // h4 #{error.stack}
+                a.btn.btn-lg.btn-default.btn-rounded.btn-xs(href= usertype==0?'/student':'/teacher') 返回首页
+    script(src='/bootstrap/js/jquery.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/pace.min.js')
+    script(src='/bootstrap/js/jasny-bootstrap.min.js')
+    script(src='/bootstrap/js/jquery.slimscroll.min.js')
+    script(src='/bootstrap/js/jquery.nanoscroller.min.js')
+    script(src='/bootstrap/js/metismenu.min.js')
+    script(src='/bootstrap/js/float-custom.js')

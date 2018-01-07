@@ -1,6 +1,7 @@
 extends ../public/layout
 
 block modal
+  // 添加课程
   .add-curriculum-modal(style='display: none;')
     .col-sm-12
       form.form-horizontal
@@ -24,6 +25,21 @@ block modal
           label.col-sm-2.control-label 开设班级
           .col-sm-10
             select(name='classid', class='form-control')
+              each classitem in classData
+                option(value= classitem.classid)= classitem.classname
+    .clear
+  // 布置作业
+  .add-assignment-modal(style='display: none;')
+    .col-sm-12
+      form.form-horizontal
+        .form-group
+          label.col-sm-2.control-label 内容
+          .col-sm-10
+            textarea.form-control(type='text', name='assignmentContent')
+        .form-group
+          label.col-sm-2.control-label 所属班级
+          .col-sm-10
+            select(name='assignmentClass', class='form-control')
               each classitem in classData
                 option(value= classitem.classid)= classitem.classname
     .clear
@@ -59,37 +75,33 @@ block leftnav
                     li.class-content(data-curriculumid= curriculumitem.id)
                       a(href='javascript: void(0);')= curriculumitem.name
             li
-              a(href='javascript: void(0);', aria-expanded='true')
+              a.resourcesTitLi(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
-                |  课程资源 
+                |  课程资源
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
                 each curriculumitem in curriculumData
-                  li(data-curriculumid= curriculumitem.id)
+                  li.resources-content(data-curriculumid= curriculumitem.id)
                     a(href='javascript: void(0);')= curriculumitem.name
-            li
-              a(href='javascript: void(0);')
-                i.icon-handbag
-                |  论坛 
             li
               a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  作业 
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
-                li
-                  a(href='javascript: void(0);') 发布作业
-                li
-                  a(href='javascript: void(0);') 查看往期作业
+                li.add-assignment
+                  a(href='javascript: void(0);') 布置作业
+                li.assignment-content
+                  a(href='javascript: void(0);') 查看已布置作业
             li
               a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  公告 
                 span.fa.arrow
               ul.nav-second-level.nav(aria-expanded='true')
-                li
+                li.add-notice
                   a(href='javascript: void(0);') 发布公告
-                li
+                li.notice-content
                   a(href='javascript: void(0);') 查看往期公告
 
 block content

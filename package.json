@@ -15,6 +15,7 @@
     "serve-favicon": "~2.4.2",
     "mysql": "latest",
     "connect-flash": "latest",
-    "express-session": "latest"
+    "express-session": "latest",
+    "multiparty": "^4.1.3"
   }
 }

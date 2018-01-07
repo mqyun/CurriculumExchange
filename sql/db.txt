@@ -43,7 +43,10 @@
 	content		作业内容
 	userid		作业布置人
 	classid		作业所属班级
+	date
 公告表 (notice)
 	id			公告id
 	content		公告内容
 	userid		公告发布人
+	classid
+	date

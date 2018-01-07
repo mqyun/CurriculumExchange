@@ -44,7 +44,7 @@ html
       .container-fluid
         .row
           .col-xs-6
-            a.admin-logo(href='javascript: void(0);')
+            a.admin-logo(href= usertype==0?'/student':'/teacher')
               h1(style='color:#000;') 课程交流
                 small= homestyle
             .left-nav-toggle.visible-xs.visible-sm
@@ -52,6 +52,8 @@ html
                 i.glyphicon.glyphicon-menu-hamburger
           .col-xs-6
             ul.list-inline.top-right-nav
+              li
+                a(href='/forum') 前往论坛
               - if (usertype == 0)
                 li.dropdown.hidden-xs.icon-dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
