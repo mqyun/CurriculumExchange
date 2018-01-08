@@ -26,7 +26,7 @@ html(lang='en')
               .misc-box.text-center
                 h1= error.status
                 h4= message
-                // h4 #{error.stack}
+                p #{error.stack}
                 a.btn.btn-lg.btn-default.btn-rounded.btn-xs(href= usertype==0?'/student':'/teacher') 返回首页
     script(src='/bootstrap/js/jquery.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')

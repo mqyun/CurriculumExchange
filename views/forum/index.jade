@@ -1,0 +1,151 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title 论坛
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/simple-line-icons.css', rel='stylesheet')
+    link(href='/bootstrap/css/font-awesome.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/pace.css', rel='stylesheet')
+    link(href='/bootstrap/css/jasny-bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/bootstrap/css/nanoscroller.css')
+    link(href='/bootstrap/css/c3.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/blue.css', rel='stylesheet')
+    link(href='/bootstrap/css/jquery.datatables.min.css', rel='stylesheet', type='text/css')
+    link(href='/bootstrap/css/responsive.bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='/bootstrap/css/jquery.toast.min.css', rel='stylesheet')
+    script(src='/bootstrap/js/html5shiv.min.js')
+    script(src='/bootstrap/js/respond.min.js')
+    script(src='/bootstrap/js/jquery.min.js')
+    link(href='/bootstrap/css/summernote.css', rel='stylesheet')
+    link(href='/bootstrap/css/summernote-bs3.css', rel='stylesheet')
+    link(href='/CExchange/css/public/public.css', rel='stylesheet')
+    link(href='/bootstrap/css/style.css', rel='stylesheet')
+    
+  body.layout-horizontal
+    // 上导航
+    .top-bar.bg-primary
+      .container
+        .row
+          .col-xs-6
+            a.admin-logo(href='/forum')
+              h1(style='color:#fff;') 论坛
+          .col-xs-6
+            ul.list-inline.top-right-nav
+              li
+                a(href=  usertype==0?'/student':'/teacher') 返回首页
+              li
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  img.img-circle(src='/CExchange/images/icon/fav.png', width='30', alt='')
+                ul.dropdown-menu
+                  li
+                    a(href='javascript: void(0);')
+                      i.icon-user
+                      = name
+                  li
+                    a(href='javascript: void(0);')
+                      i.icon-settings
+                      |  设置
+                  li.divider
+                  li
+                    a(href='/logout')
+                      i.icon-logout
+                      |  退出
+    // 论坛导航
+    nav.navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='javascript:;')
+                i.icon-home
+                |  论坛首页
+            li.nav-forumadd
+              a(href='javascript:;')
+                i.icon-home
+                |  发布帖子
+            li
+              a(href='javascript:;')
+                i.icon-home
+                |  教师帖子
+            li
+              a(href='javascript:;')
+                i.icon-home
+                |  学生帖子
+            li
+              a(href='javascript:;')
+                i.icon-home
+                |  我的帖子
+    
+    .h-main-content
+      .container.forum-addPanel(style='display: none;')
+        .row
+          .col-sm-12
+            .panel.panel-default
+              .panel-heading
+                | 发帖
+              .panel-body
+                form
+                  .form-group
+                    label.col-sm-1.control-label 帖子主题
+                    .col-sm-11
+                      input.form-control(type='text', name='theme', placeholder='帖子主题')
+              .panel-body
+                .summernote-content
+                  p 请在此处输入帖子内容
+              .panel-body
+                .pull-right
+                  button.btn.btn-primary.btn-forumadd 发布
+                  button.btn.btn-default(style='margin-left: 10px;').btn-canceladd 取消发布
+                .clear
+      block content
+        .container.forumitem-con
+          each forumitem in forumList
+            .panel.panel-default.blog-box.panel-forumitem(data-forumid= forumitem.forumid)
+              .panel-heading
+                .media.clearfix
+                  a.pull-left
+                    img.img-circle(src= forumitem.forumtype==0?'/CExchange/images/icon/forum-student.png':'/CExchange/images/icon/forum-teacher.png', alt='profile-picture', width='40')
+                  .media-body
+                    h6.margin-b-0
+                      | 帖子所属人：#{forumitem.relname}
+                    small.text-muted= forumitem.date
+              .panel-body
+                a(href='page-blog-article.html')
+                  h4= forumitem.theme
+                .forumIndexCon
+                  !{forumitem.content}
+              .panel-footer
+                span.pull-right
+                  button.btn.btn-primary 查看详情 >>>
+                i.fa.fa-eye
+                |  #{forumitem.viewingtimes}
+                .clear
+
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/pace.min.js')
+    script(src='/bootstrap/js/jasny-bootstrap.min.js')
+    script(src='/bootstrap/js/jquery.slimscroll.min.js')
+    script(src='/bootstrap/js/jquery.nanoscroller.min.js')
+    script(src='/bootstrap/js/metismenu.min.js')
+    script(src='/bootstrap/js/float-custom.js')
+    script(src='/bootstrap/js/d3.min.js')
+    script(src='/bootstrap/js/c3.min.js')
+    script(src='/bootstrap/js/icheck.min.js')
+    script(src='/bootstrap/js/jquery.datatables.min.js')
+    script(src='/bootstrap/js/datatables.responsive.min.js')
+    script(src='/bootstrap/js/jquery.toast.min.js')
+    script(src='/bootstrap/js/dashboard-alpha.js')
+    script(src='/bootstrap/js/summernote.min.js')
+    script(src='/CExchange/js/public/sweetalert.min.js')
+    script(src='/CExchange/js/public/public.js')
+    script(src='/CExchange/js/forum/forum.js')
+    block js

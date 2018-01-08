@@ -82,14 +82,14 @@ router.get('/', function(req, res, next) {
     }
     usermodel.getThisCurriculum(uid, function(err, curriculumData) {
       if (err) {
-        res.render('teacher/index', {
+        res.render('teacherAndpub/index', {
           title: '教师端',
           homestyle: '(教师端)',
           classData: classData,
           curriculumData: ''
         });
       }
-      res.render('teacher/index', {
+      res.render('teacherAndpub/index', {
         title: '教师端',
         homestyle: '(教师端)',
         classData: classData,

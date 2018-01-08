@@ -13,6 +13,8 @@ var studentuser = require('./routes/student/users');
 var teacheruser = require('./routes/teacher/users');
 var teachermanage = require('./routes/teacher/manage');
 
+var forumindex = require('./routes/forum/index');
+
 var app = express();
 
 // view engine setup
@@ -44,25 +46,25 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.use(function(req, res, next) {
-	if (req.session.uid == '' || req.session.uid == null) {
-		if (req.url == '/teacher' || req.url == '/student' || req.url == '/forum') {
-			res.redirect('/');
-		} else {
-			next();
-		}
-	} else if (req.session.uid != '' || req.session.uid != null) {
-		if (req.url == '/' || req.url == '/reg') {
-			if (req.session.usertype == 0) {
-				res.redirect('/student');
-			} else {
-				res.redirect('/teacher');
-			}
-		} else {
-			next();
-		}
-	}
-});
+// app.use(function(req, res, next) {
+// 	if (req.session.uid == '' || req.session.uid == null) {
+// 		if (req.url == '/teacher' || req.url == '/student' || req.url == '/forum') {
+// 			res.redirect('/');
+// 		} else {
+// 			next();
+// 		}
+// 	} else if (req.session.uid != '' || req.session.uid != null) {
+// 		if (req.url == '/' || req.url == '/reg') {
+// 			if (req.session.usertype == 0) {
+// 				res.redirect('/student');
+// 			} else {
+// 				res.redirect('/teacher');
+// 			}
+// 		} else {
+// 			next();
+// 		}
+// 	}
+// });
 
 app.use('/', index);
 
@@ -70,6 +72,8 @@ app.use('/student', studentuser);
 
 app.use('/teacher', teacheruser);
 app.use('/teachermanage', teachermanage);
+
+app.use('/forum', forumindex);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

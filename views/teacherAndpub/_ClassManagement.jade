@@ -4,7 +4,7 @@
       h4= pageHeaderTit
         small.pageHeaderClassName
 .row
-  .col-md-6
+  div(class= usertype==0?'col-md-12':'col-md-6')
     .panel.panel-default
       .panel-heading 教学队伍
       .panel-body
@@ -31,21 +31,22 @@
                     = teamData[j].curriculumName
                   strong 课程简介：
                   = teamData[j].introduce
-  .col-md-6
-    .panel.panel-default.collapsed
-      .panel-heading 班级学生列表
-      .panel-body
-        table.table.table-striped
-          thead
-            tr
-              th #
-              th 账号
-              th 密码
-              th 姓名
-          tbody
-            each studentitem in studentData
+  - if (usertype == 1)
+    .col-md-6
+      .panel.panel-default.collapsed
+        .panel-heading 班级学生列表
+        .panel-body
+          table.table.table-striped
+            thead
               tr
-                td= studentitem.id
-                td= studentitem.username
-                td= studentitem.password
-                td= studentitem.name
+                th #
+                th 账号
+                th 密码
+                th 姓名
+            tbody
+              each studentitem in studentData
+                tr
+                  td= studentitem.id
+                  td= studentitem.username
+                  td= studentitem.password
+                  td= studentitem.name

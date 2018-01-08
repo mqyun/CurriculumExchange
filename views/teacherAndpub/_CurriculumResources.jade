@@ -1,0 +1,65 @@
+.page-header
+	.row
+		.col-sm-6
+			h4= pageHeaderTit
+				small
+					| （
+					= curriculumName
+					| ）
+.row
+	- if (usertype == 1)
+		.col-md-3
+			.misc-box
+				p.text-center.text-uppercase.pad-v 为该课程添加课程资源
+				form(role='form')
+					.form-group
+						label.text-muted(for='exampleuser1') 资源名称
+						.group-icon
+							input.form-control(type='text', placeholder='资源名称', name='resourcesName')
+							span.icon-bag.text-muted.icon-input
+					.clearfix
+						.pull-right
+							input.btn.btn-block.btn-primary.btn-addResources(type='button', value='确认添加', data-curriculumid= curriculumId)
+	div(class= usertype==0?'col-md-12':'col-md-9')
+		.panel.panel-default.collapsed
+			.panel-heading 课程资源列表
+			.panel-body
+				- if (resourcesList.length > 0)
+					table.table.table-striped
+						thead
+							tr
+								th #
+								th 名称
+								th 状态
+								th
+								th
+						tbody
+							each resourcesItem in resourcesList
+								tr
+									td= resourcesItem.id
+									td= resourcesItem.name
+									- if (resourcesItem.url == null && usertype == 1)
+										td
+											form(method='post', action='/teachermanage/uploadResources/'+curriculumId+'/'+resourcesItem.id, enctype='multipart/form-data')
+												input(type='file', name='inputFile', multiple='mutiple')
+												input.btn.btn-default.btn-uploadResources(type='submit', value='上传')
+										td
+											button(class='btn btn-default', disabled) 下载
+									- else if (resourcesItem.url != null && usertype == 1)
+										td 已上传
+										td
+											a(href= resourcesItem.url, class='btn btn-default', target='_blank') 下载
+									- else if (resourcesItem.url == null && usertype == 0)
+										td 未上传
+										td
+											button(class='btn btn-default', disabled) 下载
+									- else if (resourcesItem.url != null && usertype == 0)
+										td 已上传
+										td
+											a(href= resourcesItem.url, class='btn btn-default', target='_blank') 下载
+									td
+										button(class='btn btn-default') 删除
+				- else
+					.no-datacon
+						.no-data
+							img(src='/CExchange/images/no-data.png')

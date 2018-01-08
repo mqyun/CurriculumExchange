@@ -3,6 +3,7 @@ var curriculumid = getFromUrl('curriculumid') || '';
 
 $(function() {
 	if (isFromUpLoad) {
+		showTips('success', 'Success!', '上传课程资源成功~');
 		var resourcesLis = $('.resources-content');
 		$('.resourcesTitLi').click();
 		resourcesLis.each(function() {
@@ -200,6 +201,16 @@ $(document).on('click', '.btn-addResources', function() {
 			}
 		});
   }
+});
+
+// 上传资源验证
+$(document).on('click', '.btn-uploadResources', function() {
+	if ($(this).prev().val() == '') {
+		showTips('warning', 'Warning', '请选择要上传的资源');
+		return false;
+	} else {
+		$(this).parents('form').submit();
+	}
 });
 
 // 请求班级管理

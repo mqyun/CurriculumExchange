@@ -24,7 +24,7 @@ router.post('/class', function(req, res, next) {
 				});
 				return next(err);
 			}
-			res.render('teacher/_ClassManagement', {
+			res.render('teacherAndpub/_ClassManagement', {
 				pageHeaderTit: '班级管理',
 				teamData: teamData,
 				studentData: studentData
@@ -42,7 +42,7 @@ router.post('/class', function(req, res, next) {
 router.post('/curriculumcon', function(req, res, next) {
 	var curriculumId = req.body.curriculumId;
 	managemodel.getCurriculumCon(curriculumId, function(err, curriculumCon) {
-		res.render('teacher/_CurriculumContent', {
+		res.render('teacherAndpub/_CurriculumContent', {
 			pageHeaderTit: '课程详情',
 			curriculumCon: curriculumCon[0]
 		}, function(err, html) {
@@ -122,7 +122,7 @@ router.post('/assignmentcon', function(req, res, next) {
 			var d = rows[i].date;
 			rows[i].date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 		}
-		res.render('teacher/_ClassAssignment', {
+		res.render('teacherAndpub/_ClassAssignment', {
 			pageHeaderTit: '已布置作业',
 			data: rows
 		}, function(err, html) {
@@ -165,7 +165,7 @@ router.post('/noticecon', function(req, res, next) {
 			var d = rows[i].date;
 			rows[i].date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 		}
-		res.render('teacher/_ClassAssignment', {
+		res.render('teacherAndpub/_ClassAssignment', {
 			pageHeaderTit: '已发布公告',
 			data: rows
 		}, function(err, html) {
@@ -188,8 +188,8 @@ router.post('/resourcescon', function(req, res, next) {
 			});
 			return next(err);
 		}
-		res.render('teacher/_CurriculumResources', {
-			pageHeaderTit: '管理课程资源',
+		res.render('teacherAndpub/_CurriculumResources', {
+			pageHeaderTit: '课程资源',
 			curriculumId: curriculumId,
 			curriculumName: curriculumName,
 			resourcesList: rows
