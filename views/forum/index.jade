@@ -4,7 +4,7 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title 论坛
+    title= title
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     link(href='/bootstrap/css/simple-line-icons.css', rel='stylesheet')
     link(href='/bootstrap/css/font-awesome.min.css', rel='stylesheet')
@@ -64,7 +64,7 @@ html
             span.icon-bar
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav
-            li.active
+            li.active.nav-forumhome
               a(href='javascript:;')
                 i.icon-home
                 |  论坛首页
@@ -106,29 +106,15 @@ html
                   button.btn.btn-primary.btn-forumadd 发布
                   button.btn.btn-default(style='margin-left: 10px;').btn-canceladd 取消发布
                 .clear
-      block content
+      - if (!isDetails)
         .container.forumitem-con
-          each forumitem in forumList
-            .panel.panel-default.blog-box.panel-forumitem(data-forumid= forumitem.forumid)
-              .panel-heading
-                .media.clearfix
-                  a.pull-left
-                    img.img-circle(src= forumitem.forumtype==0?'/CExchange/images/icon/forum-student.png':'/CExchange/images/icon/forum-teacher.png', alt='profile-picture', width='40')
-                  .media-body
-                    h6.margin-b-0
-                      | 帖子所属人：#{forumitem.relname}
-                    small.text-muted= forumitem.date
-              .panel-body
-                a(href='page-blog-article.html')
-                  h4= forumitem.theme
-                .forumIndexCon
-                  !{forumitem.content}
-              .panel-footer
-                span.pull-right
-                  button.btn.btn-primary 查看详情 >>>
-                i.fa.fa-eye
-                |  #{forumitem.viewingtimes}
-                .clear
+      .container
+        - if (!isDetails)
+          ul.pagination
+            - for (var i = 0; i < page.page; i++)
+              li.forum-page(class= i==0?'active':'', data-pagenum= i+1)
+                a(href='javascript:;')= i+1
+      block content
 
     script(src='/bootstrap/js/bootstrap.min.js')
     script(src='/bootstrap/js/pace.min.js')

@@ -1,0 +1,21 @@
+each forumitem in forumList
+	.panel.panel-default.blog-box.panel-forumitem(data-forumid= forumitem.id)
+		.panel-heading
+			.media.clearfix
+				a.pull-left
+					img.img-circle(src= forumitem.usertype==0?'/CExchange/images/icon/forum-student.png':'/CExchange/images/icon/forum-teacher.png', alt='profile-picture', width='40')
+				.media-body
+					h6.margin-b-0
+						| 帖子所属人：#{forumitem.relname}
+					small.text-muted= forumitem.date
+		.panel-body
+			a(href='page-blog-article.html')
+				h4= forumitem.theme
+			.forumIndexCon
+				!{forumitem.content}
+		.panel-footer
+			span.pull-right
+				a(href='/forum/details/' + forumitem.id).btn.btn-primary 查看详情 >>>
+			i.fa.fa-eye
+			|  #{forumitem.viewingtimes}
+			.clear

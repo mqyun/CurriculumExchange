@@ -1,0 +1,32 @@
+extends index
+
+block content
+	.container(style='margin-top: 30px')
+		a.btn.btn-default(href='/forum', style='margin-bottom: 10px') 返回
+		.panel.panel-default.blog-box.panel-forumitem
+			.panel-heading
+				.media.clearfix
+					a.pull-left
+						img.img-circle(src='/CExchange/images/icon/forum-student.png' alt='profile-picture', width='40')
+					.media-body
+						h6.margin-b-0
+							| 帖子所属人：#{forumCon.relname}
+						small.text-muted #{forumCon.date}
+			.panel-body
+				a(href='javascript:;')
+					h4 #{forumCon.theme}
+				.forumItemIndexCon !{forumCon.content}
+		
+		.panel.panel-default.blog-box.panel-forumitem
+			.panel-heading
+				.media.clearfix
+					a.pull-left
+						img.img-circle(src='/CExchange/images/icon/forum-student.png' alt='profile-picture', width='40')
+					.media-body
+						h6.margin-b-0
+							| 回复用户：#{forumCon.relname}
+						small.text-muted #{forumCon.date}
+			.panel-body
+				.forumItemIndexCon !{forumCon.content}
+block js
+	script(src='/CExchange/js/forum/details.js')
