@@ -91,6 +91,7 @@ $(document).on('click', '.class-content', function() {
 // 布置作业
 $(document).on('click', '.add-assignment', function() {
 	$('.add-assignment-modal').show();
+	$('.form-group-isload').show();
 	showModal('布置作业', $('.add-assignment-modal'), '确定', '取消', function() {
 		var assignmentContent = $("textarea[name='assignmentContent']").val();
 		var assignmentClass = $("select[name='assignmentClass']").val();
@@ -139,6 +140,7 @@ $(document).on('click', '.assignment-content', function() {
 // 发布公告
 $(document).on('click', '.add-notice', function() {
 	$('.add-assignment-modal').show();
+	$('.form-group-isload').hide();
 	showModal('发布公告', $('.add-assignment-modal'), '确定', '取消', function() {
 		var assignmentContent = $("textarea[name='assignmentContent']").val();
 		var assignmentClass = $("select[name='assignmentClass']").val();
@@ -175,7 +177,11 @@ $(document).on('click', '.notice-content', function() {
 	var classid = $('.notice-content').index(this);
 	setBtn('.notice-content', classid);
 	$('.main-content').html('');
-	getNoticeCon();
+	var classId = $('.manage-class').eq(0).data('classid');
+	var data = {
+		'classId': classId
+	}
+	getNoticeCon(data);
 });
 
 // 查看课程资源
@@ -310,8 +316,8 @@ function getAssignmentCon(data) {
 }
 
 // 请求已发布的公告
-function getNoticeCon() {
-	ajaxPost('/teachermanage/noticecon', {}, function(result) {
+function getNoticeCon(data) {
+	ajaxPost('/teachermanage/noticecon', data, function(result) {
 		if (result.success) {
 			$('.main-content').append(result.view);
 		}

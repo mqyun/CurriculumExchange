@@ -16,7 +16,7 @@
 									img(src='/bootstrap/picture/cd-icon-picture.svg', alt='Picture')
 								.cd-timeline-content
 									p= item.content
-									span.cd-date.assignment-date= item.date
+									span.cd-date.assignment-date #{item.name}发布于#{item.date}
 				- else
 					.no-datacon
 						.no-data

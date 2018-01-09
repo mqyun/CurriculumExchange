@@ -1,5 +1,5 @@
 $(function() {
-  
+
 });
 
 // 学生端我的班级
@@ -59,4 +59,16 @@ $(document).on('click', '.student-resources', function() {
   }
   $('.main-content').html('');
   getResourcesCon(data);
+});
+
+// 查看已发布公告
+$(document).on('click', '.student-notice-content', function() {
+	var classid = $('.student-notice-content').index(this);
+	setBtn2('.student-notice-content', classid);
+	$('.main-content').html('');
+  var classId = $('.student-myclass').data('classid');
+  var data = {
+    'classId': classId
+  }
+	getNoticeCon(data);
 });

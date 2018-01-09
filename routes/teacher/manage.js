@@ -156,8 +156,8 @@ router.post('/addNotice', function(req, res, next) {
 
 // 查看已发布公告
 router.post('/noticecon', function(req, res, next) {
-	var userid = req.session.uid;
-	managemodel.getAllNotice(userid, function(err, rows) {
+	var classId = req.body.classId;
+	managemodel.getAllNotice(classId, function(err, rows) {
 		if (err) {
 			res.json({
 				'error': err

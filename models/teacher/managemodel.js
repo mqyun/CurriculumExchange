@@ -72,9 +72,9 @@ module.exports = {
 		});
 	},
 	// 查看往期公告
-	getAllNotice: function(userid, callback) {
-		var sql = "select * from notice where userid = ? order by date desc;";
-		db.exec(sql, userid, function(err, rows) {
+	getAllNotice: function(classId, callback) {
+		var sql = "select notice.*,teacher.name from notice, teacher where notice.userid = teacher.id and notice.classid = ? order by date desc;";
+		db.exec(sql, classId, function(err, rows) {
 			if (err) {
 				callback(err);
 			}

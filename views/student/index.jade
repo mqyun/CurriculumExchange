@@ -43,6 +43,10 @@ block leftnav
                 each curriculumitem in curriculumData
                   li.student-resources(data-curriculumid= curriculumitem.id)
                     a(href='javascript: void(0);')= curriculumitem.name
+            li.student-notice-content
+              a(href='javascript: void(0);', aria-expanded='true')
+                i.icon-handbag
+                |  查看公告
 
 block content
   section.main-content

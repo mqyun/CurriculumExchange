@@ -42,7 +42,7 @@ block modal
             select(name='assignmentClass', class='form-control')
               each classitem in classData
                 option(value= classitem.classid)= classitem.classname
-        .form-group
+        .form-group.form-group-isload
           label.col-sm-2.control-label 所属课程
           .col-sm-10
             select(name='assignmentCurriculum', class='form-control')
