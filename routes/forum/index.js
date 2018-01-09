@@ -105,11 +105,37 @@ router.post('/addForumReply', function(req, res, next) {
   var userType = req.session.usertype;
   forummodel.addForumReply(forumId, userId, userType, forumReplyContent, function(err) {
     if (err) {
-      res.json('error', err);
+      res.json({
+        'error': err
+      });
       return next(err);
     }
     res.json({
       'success': '回复成功'
+    });
+  });
+});
+
+// 删除帖子
+router.post('/deleteForum', function(req, res, next) {
+  var forumId = req.body.forumId;
+  forummodel.deleteForum(forumId, function(err) {
+    if (err) {
+      res.json({
+        'error': err
+      });
+      return next(err);
+    }
+    forummodel.deleteForumReply(forumId, function(err) {
+      if (err) {
+        res.json({
+          'error': err
+        });
+        return next(err);
+      }
+      res.json({
+        'success': '删除成功'
+      });
     });
   });
 });

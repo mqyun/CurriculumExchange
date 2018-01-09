@@ -8,6 +8,8 @@ each forumitem in forumList
 					h6.margin-b-0
 						| 帖子所属人：#{forumitem.relname}
 					small.text-muted= forumitem.date
+				- if (usertype == 1 && forumitem.usertype == 0)
+					button.pull-right.btn.btn-default.btn-deleteforum 删除该贴
 		.panel-body
 			a(href='javascript:;')
 				h4= forumitem.theme

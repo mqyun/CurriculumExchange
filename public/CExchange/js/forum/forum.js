@@ -69,19 +69,21 @@ $(document).on('click', '.forum-page', function() {
   getForumHome(data);
 });
 
-// 查看帖子详情
-// $(document).on('click', '.btn-forumitemCon', function() {
-//   var forumId = $(this).parents('.panel-forumitem').data('forumid');
-//   var data = {
-//     'forumId': forumId
-//   }
-//   $('.forumitem-con').html('');
-//   ajaxPost('/forum/getForumCon', data, function(result) {
-//     if (result.success) {
-//       $('.forumitem-con').append(result.view);
-//     }
-//   });
-// });
+// 删除帖子
+$(document).on('click', '.btn-deleteforum', function() {
+  var forumId = $(this).parents('.panel-forumitem').data('forumid');
+  var data = {
+    'forumId': forumId
+  }
+  ajaxPost('/forum/deleteForum', data, function(result) {
+    if (result.success) {
+      showTips('success', 'Success!', result.success);
+      setTimeout(function() {
+        location.reload();
+      }, 1000);
+    }
+  });
+});
 
 // 获取论坛首页帖子方法
 function getForumHome(data) {

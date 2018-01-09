@@ -108,4 +108,24 @@ module.exports = {
       callback(err);
     });
   },
+  // 教师删除学生帖子
+  deleteForum: function(forumId, callback) {
+    var sql = "delete from forum where id = ?;";
+    db.exec(sql, forumId, function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
+  // 删除帖子的同时删除所有回复
+  deleteForumReply: function(forumId, callback) {
+    var sql = "delete from forumreply where forumid = ?;";
+    db.exec(sql, forumId, function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
 }
