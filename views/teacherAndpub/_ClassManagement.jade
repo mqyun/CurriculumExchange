@@ -13,23 +13,21 @@
             - for (var i in teamData)
               - if (i == 0)
                 li.active(role='presentation')
-                  a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamData[i].teacherName
+                  a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamData[i].name
               - else
                 li(role='presentation')
-                  a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamData[i].teacherName
+                  a(href='#t'+i, aria-controls='t'+i, role='tab', data-toggle='tab')= teamData[i].name
           .tab-content
             - for (var j in teamData)
               - if (j == 0)
                 .tab-pane.active(role='tabpanel', id='t'+j)
-                  h4 教授课程：
-                    = teamData[j].curriculumName
-                  strong 课程简介：
+                  h4= teamData[j].name
+                  strong 简介：
                   = teamData[j].introduce
               - else
                 .tab-pane(role='tabpanel', id='t'+j)
-                  h4 教授课程：
-                    = teamData[j].curriculumName
-                  strong 课程简介：
+                  h4= teamData[j].name
+                  strong 简介：
                   = teamData[j].introduce
   - if (usertype == 1)
     .col-md-6

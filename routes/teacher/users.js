@@ -10,6 +10,7 @@ router.post('/reg', function(req, res, next) {
   var password = req.body.password;
   var name = req.body.name;
   var classid = req.body.classid;
+  var introduce = req.body.introduce;
   usermodel.selectUser(username, function(err, rows) {
     if (err) {
       res.json({
@@ -23,7 +24,7 @@ router.post('/reg', function(req, res, next) {
       });
       return next(err);
     }
-    usermodel.studentReg(username, password, name, classid, function(err) {
+    usermodel.studentReg(username, password, name, introduce, classid, function(err) {
       if (err) {
         res.json({
           'error': error

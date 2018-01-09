@@ -2,15 +2,22 @@
 	.row
 		.col-sm-6
 			h4= pageHeaderTit
+				- if (curriculumName)
+					small (#{curriculumName})
 .row
 	.col-md-12
 		.panel.panel-default
 			.panel-body
-				section#cd-timeline.cd-container
-					each item in data
-						.cd-timeline-block
-							.cd-timeline-img.cd-picture
-								img(src='/bootstrap/picture/cd-icon-picture.svg', alt='Picture')
-							.cd-timeline-content
-								p= item.content
-								span.cd-date.assignment-date= item.date
+				- if (data.length != 0)
+					section#cd-timeline.cd-container
+						each item in data
+							.cd-timeline-block
+								.cd-timeline-img.cd-picture
+									img(src='/bootstrap/picture/cd-icon-picture.svg', alt='Picture')
+								.cd-timeline-content
+									p= item.content
+									span.cd-date.assignment-date= item.date
+				- else
+					.no-datacon
+						.no-data
+							img(src='/CExchange/images/no-data.png')

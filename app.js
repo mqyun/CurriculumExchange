@@ -46,25 +46,25 @@ app.use(function(req, res, next) {
 	next();
 });
 
-// app.use(function(req, res, next) {
-// 	if (req.session.uid == '' || req.session.uid == null) {
-// 		if (req.url == '/teacher' || req.url == '/student' || req.url == '/forum') {
-// 			res.redirect('/');
-// 		} else {
-// 			next();
-// 		}
-// 	} else if (req.session.uid != '' || req.session.uid != null) {
-// 		if (req.url == '/' || req.url == '/reg') {
-// 			if (req.session.usertype == 0) {
-// 				res.redirect('/student');
-// 			} else {
-// 				res.redirect('/teacher');
-// 			}
-// 		} else {
-// 			next();
-// 		}
-// 	}
-// });
+app.use(function(req, res, next) {
+	if (req.session.uid == '' || req.session.uid == null) {
+		if (req.url == '/teacher/' || req.url == '/student/' || req.url == '/teacher' || req.url == '/student' || req.url.indexOf('/forum') != -1) {
+			res.redirect('/');
+		} else {
+			next();
+		}
+	} else {
+		if (req.url == '/' || req.url == '/reg') {
+			if (req.session.usertype == 0) {
+				res.redirect('/student');
+			} else {
+				res.redirect('/teacher');
+			}
+		} else {
+			next();
+		}
+	}
+});
 
 app.use('/', index);
 

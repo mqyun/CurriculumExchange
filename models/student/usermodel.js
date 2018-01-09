@@ -31,4 +31,14 @@ module.exports = {
       callback(err, rows);
     });
 	},
+  // 获取所有作业
+	getAllAssignment: function(classid, curriculumId, callback) {
+		var sql = "select * from assignment where classid = ? and assignmentCurriculumid = ? order by date desc;";
+		db.exec(sql, [classid, curriculumId], function(err, rows) {
+			if (err) {
+				callback(err);
+			}
+			callback(err, rows);
+		});
+	},
 }

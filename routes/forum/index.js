@@ -70,22 +70,48 @@ router.get('/details/:forumid', function(req, res, next) {
     if (err) {
       return next(err);
     }
-    forummodel.getForumCon(forumId, function(err, rows) {
+    forummodel.getForumCon(forumId, function(err, forumCon) {
       if (err) {
         return next(err);
       }
-      for (var i = 0; i < rows.length; i++) {
-  			var d = rows[i].date;
-  			rows[i].date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-  		}
-      res.render('forum/details', {
-        title: '帖子详情',
-        forumCon: rows[0],
-        isDetails: true
+      forummodel.getForumReplyCon(forumId, function(err, forumReplyList) {
+        if (err) {
+          return next(err);
+        }
+        for (var i = 0; i < forumCon.length; i++) {
+    			var d = forumCon[i].date;
+    			forumCon[i].date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+    		}
+        for (var i = 0; i < forumReplyList.length; i++) {
+    			var d = forumReplyList[i].date;
+    			forumReplyList[i].date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+    		}
+        res.render('forum/details', {
+          title: '帖子详情',
+          forumCon: forumCon[0],
+          forumReplyList: forumReplyList,
+          isDetails: true
+        });
       });
     });
   });
 });
 
+// 回复帖子
+router.post('/addForumReply', function(req, res, next) {
+  var forumId = req.body.forumId;
+  var forumReplyContent = req.body.forumReplyContent;
+  var userId = req.session.uid;
+  var userType = req.session.usertype;
+  forummodel.addForumReply(forumId, userId, userType, forumReplyContent, function(err) {
+    if (err) {
+      res.json('error', err);
+      return next(err);
+    }
+    res.json({
+      'success': '回复成功'
+    });
+  });
+});
 
 module.exports = router;

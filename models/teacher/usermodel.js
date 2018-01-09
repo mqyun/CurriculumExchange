@@ -12,9 +12,9 @@ module.exports = {
 		});
   },
   // 教师注册
-  studentReg: function(username, password, name, classid, callback) {
-    var sql = "insert into teacher(username, password, name, classid, usertype) values(?,?,?,?,1);";
-    db.exec(sql, [username, password, name, classid], function(err) {
+  studentReg: function(username, password, name, introduce, classid, callback) {
+    var sql = "insert into teacher(username, password, name, introduce, classid, usertype) values(?,?,?,?,?,1);";
+    db.exec(sql, [username, password, name, introduce, classid], function(err) {
       if (err) {
         callback(err);
       }

@@ -54,81 +54,6 @@ html
             ul.list-inline.top-right-nav
               li
                 a(href='/forum') 前往论坛
-              - if (usertype == 0)
-                li.dropdown.hidden-xs.icon-dropdown
-                  a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    i.glyphicon.glyphicon-envelope
-                    span.badge.badge-warning 4
-                  ul.dropdown-menu.top-dropdown.lg-dropdown.notification-dropdown
-                    li
-                      .dropdown-header
-                        a.pull-right.text-muted(href='#')
-                          small 查看详情
-                        |  作业
-                      .scrollDiv
-                        .notification-list
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              img.img-circle(src='/bootstrap/picture/avtar-2.jpg', alt='', width='50')
-                            span.notification-title
-                              | John Doe 
-                              label.label.label-primary.pull-right Office
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              img.img-circle(src='/bootstrap/picture/avtar-3.jpg', alt='', width='50')
-                            span.notification-title
-                              | Emily Doe  
-                              label.label.label-info.pull-right Marketing
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              img.img-circle(src='/bootstrap/picture/avtar-4.jpg', alt='', width='50')
-                            span.notification-title
-                              | Michael Clark 
-                              label.label.label-warning.pull-right Support
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              img.img-circle(src='/bootstrap/picture/avtar-5.jpg', alt='', width='50')
-                            span.notification-title
-                              | Ronaldo 
-                              label.label.label-success.pull-right Metting
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
-                li.dropdown.hidden-xs.icon-dropdown
-                  a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    i.glyphicon.glyphicon-bell
-                    span.badge.badge-danger 6
-                  ul.dropdown-menu.top-dropdown.lg-dropdown.notification-dropdown
-                    li
-                      .dropdown-header
-                        a.pull-right.text-muted(href='#')
-                          small 查看详情
-                        |  公告
-                      .scrollDiv
-                        .notification-list
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              i.icon-cloud-upload.text-primary
-                            span.notification-title Upload Complete
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              i.icon-info.text-warning
-                            span.notification-title Storage Space low
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
-                          a.clearfix(href='javascript: void(0);')
-                            span.notification-icon
-                              i.icon-check.text-success
-                            span.notification-title Project Task Complete 
-                            span.notification-description Praesent dictum nisl non est sagittis luctus.
-                            span.notification-time 40 minutes ago
               li.dropdown.avtar-dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                   img.img-circle(src='/CExchange/images/icon/fav.png', width='30', alt='')
@@ -137,10 +62,6 @@ html
                     a(href='javascript: void(0);')
                       i.icon-user
                       = name
-                  li
-                    a(href='javascript: void(0);')
-                      i.icon-settings
-                      |  设置
                   li.divider
                   li
                     a(href='/logout')

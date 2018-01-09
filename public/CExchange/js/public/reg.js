@@ -1,5 +1,5 @@
 $(function() {
-
+  $("input[name='introduce']").parents('.form-group').hide();
 });
 
 // 教师学生注册切换
@@ -8,9 +8,11 @@ $(document).on('click', '.switch', function() {
   if (btnConText.indexOf('教师') != -1) {
     $('.misc-header').text('教师注册');
     $(this).text('切换至学生注册 >>>');
+    $("input[name='introduce']").parents('.form-group').show();
   } else {
     $('.misc-header').text('学生注册');
     $(this).text('切换至教师注册 >>>');
+    $("input[name='introduce']").parents('.form-group').hide();
   }
 });
 
@@ -27,6 +29,8 @@ $(document).on('click', '.btn-reg', function() {
   var password = $("input[name='password']").val();
   var name = $("input[name='name']").val();
   var classid = $("select[name='classid']").val();
+  var introduce = $("input[name='introduce']").val();
+  var data;
   if (!validationInput(username, password, name)) {
     showTips('warning', '请检查注册信息!', '填写错误的地方已经被标注~');
     setTimeout(function() {
@@ -36,15 +40,22 @@ $(document).on('click', '.btn-reg', function() {
     var url;
     if ($('.misc-header').text().indexOf('学生') != -1) {
       url = '/student/reg';
+      data = {
+        'username': username,
+        'password': password,
+        'classid': classid,
+        'name': name
+      };
     } else {
       url = '/teacher/reg';
+      data = {
+        'username': username,
+        'password': password,
+        'classid': classid,
+        'name': name,
+        'introduce': introduce
+      };
     }
-    var data = {
-      'username': username,
-      'password': password,
-      'classid': classid,
-      'name': name
-    };
     ajaxPost(url, data, function(result) {
       if (result.success) {
         showTips('success', '恭喜你!', result.success + ',两秒钟之后返回登录界面');

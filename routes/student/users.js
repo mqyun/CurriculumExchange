@@ -99,4 +99,32 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// 学生端我的作业
+router.post('/myassignment', function(req, res, next) {
+  var classid = req.body.classId;
+  var curriculumId = req.body.curriculumId;
+  var curriculumName = req.body.curriculumName;
+  usermodel.getAllAssignment(classid, curriculumId, function(err, rows) {
+		if (err) {
+			res.json({
+				'error': err
+			});
+		}
+		for (var i = 0; i < rows.length; i++) {
+			var d = rows[i].date;
+			rows[i].date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+		}
+		res.render('teacherAndpub/_ClassAssignment', {
+			pageHeaderTit: '已布置作业',
+			data: rows,
+      curriculumName: curriculumName
+		}, function(err, html) {
+			res.json({
+				'success': true,
+				'view': html
+			})
+		});
+	});
+});
+
 module.exports = router;

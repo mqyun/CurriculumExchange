@@ -23,6 +23,24 @@ $(document).on('click', '.student-mycurriculum', function() {
 	getCurriculumCon(data);
 });
 
+// 学生端我的作业
+$(document).on('click', '.student-myassignment', function() {
+  var curriculumId = $(this).data('curriculumid');
+  var classId = $('.student-myclass').eq(0).data('classid');
+  var curriculumName = $(this).text();
+  var data = {
+    'curriculumId': curriculumId,
+    'classId': classId,
+    'curriculumName': curriculumName
+  }
+  $('.main-content').html('');
+  ajaxPost('/student/myassignment', data, function(result) {
+    if (result.success) {
+      $('.main-content').append(result.view);
+    }
+  });
+});
+
 // 学生端课程资源
 $(document).on('click', '.student-resources', function() {
   var curriculumId = $(this).data('curriculumid');

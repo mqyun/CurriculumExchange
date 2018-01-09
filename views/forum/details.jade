@@ -7,7 +7,7 @@ block content
 			.panel-heading
 				.media.clearfix
 					a.pull-left
-						img.img-circle(src='/CExchange/images/icon/forum-student.png' alt='profile-picture', width='40')
+						img.img-circle(src= forumCon.usertype==0?'/CExchange/images/icon/forum-student.png':'/CExchange/images/icon/forum-teacher.png', alt='profile-picture', width='40')
 					.media-body
 						h6.margin-b-0
 							| 帖子所属人：#{forumCon.relname}
@@ -16,17 +16,28 @@ block content
 				a(href='javascript:;')
 					h4 #{forumCon.theme}
 				.forumItemIndexCon !{forumCon.content}
-		
-		.panel.panel-default.blog-box.panel-forumitem
-			.panel-heading
-				.media.clearfix
-					a.pull-left
-						img.img-circle(src='/CExchange/images/icon/forum-student.png' alt='profile-picture', width='40')
-					.media-body
-						h6.margin-b-0
-							| 回复用户：#{forumCon.relname}
-						small.text-muted #{forumCon.date}
-			.panel-body
-				.forumItemIndexCon !{forumCon.content}
+			.panel-footer
+				button.btn-showreply.btn.btn-primary 回复
+			.panel-body.panel-reply(style='display: none;')
+				.summernote-reply
+					p 请在此处输入回复内容
+				.panel-footer
+					.pull-right
+						button.btn.btn-success.btn-addreply(data-forumid= forumCon.id) 回复
+						button.btn.btn-default(style='margin-left: 10px;').btn-cancelreply 取消回复
+					.clear
+					
+		each forumReplyItem in forumReplyList
+			.panel.panel-default.blog-box.panel-forumitem(style='margin-bottom: 0;')
+				.panel-heading
+					.media.clearfix
+						a.pull-left
+							img.img-circle(src= forumReplyItem.usertype==0?'/CExchange/images/icon/forum-student.png':'/CExchange/images/icon/forum-teacher.png', alt='profile-picture', width='40')
+						.media-body
+							h6.margin-b-0
+								| 回复用户：#{forumReplyItem.relname}
+							small.text-muted #{forumReplyItem.date}
+				.panel-body
+					.forumItemIndexCon !{forumReplyItem.content}
 block js
 	script(src='/CExchange/js/forum/details.js')

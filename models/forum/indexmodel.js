@@ -64,6 +64,7 @@ module.exports = {
       callback(err);
     });
   },
+  // 获取主题帖详情
   getForumCon: function(forumId, callback) {
     var sql = "SELECT * from (SELECT forum.*,\
               case forum.usertype\
@@ -78,6 +79,33 @@ module.exports = {
         callback(err);
       }
       callback(err, rows);
+    });
+  },
+  // 获取帖子回复内容
+  getForumReplyCon: function(forumId, callback) {
+    var sql = "SELECT * from (SELECT forumreply.*,\
+              case forumreply.usertype\
+              when 0 THEN student.name\
+              when 1 THEN teacher.name\
+              END as relname\
+              FROM forumreply\
+              LEFT JOIN student on student.id=forumreply.userid\
+              LEFT JOIN teacher on teacher.id=forumreply.userid) as a where forumid = ?;";
+    db.exec(sql, forumId, function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
+  },
+  // 回复主题帖
+  addForumReply: function(forumid, userid, usertype, content, callback) {
+    var sql = "insert into forumreply(forumid, userid, usertype, content, date) values(?,?,?,?,now());";
+    db.exec(sql, [forumid, userid, usertype, content], function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
     });
   },
 }

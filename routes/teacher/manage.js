@@ -96,7 +96,8 @@ router.post('/addAssignment', function(req, res, next) {
 	var content = req.body.assignmentContent;
 	var userid = req.session.uid;
 	var classid = req.body.assignmentClass;
-	managemodel.addAssignment(content, userid, classid, function(err) {
+	var assignmentCurriculumid = req.body.assignmentCurriculum;
+	managemodel.addAssignment(content, userid, classid, assignmentCurriculumid, function(err) {
 		if (err) {
 			res.json({
 				'error': err
@@ -112,7 +113,8 @@ router.post('/addAssignment', function(req, res, next) {
 // 查看已布置作业
 router.post('/assignmentcon', function(req, res, next) {
 	var userid = req.session.uid;
-	managemodel.getAllAssignment(userid, function(err, rows) {
+	var curriculumId = req.body.curriculumId;
+	managemodel.getAllAssignment(userid, curriculumId, function(err, rows) {
 		if (err) {
 			res.json({
 				'error': err
@@ -254,6 +256,22 @@ router.post('/uploadResources/:curriculumid/:resourcesid', function(req, res, ne
 			});
 		}
 		res.redirect('/teacher/?isFromUpLoad=true&curriculumid=' + curriculumid);
+	});
+});
+
+// 删除课程资源
+router.post('/deleteresources', function(req, res, next) {
+	var resid = req.body.resid;
+	managemodel.deleteResources(resid, function(err) {
+		if (err) {
+			res.json({
+				'error': err
+			});
+			return next(err);
+		}
+		res.json({
+			'success': '删除成功'
+		});
 	});
 });
 

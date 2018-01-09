@@ -3,7 +3,7 @@ var db = require('../dboperation');
 module.exports = {
 	// 根据班级获取教学队伍以及各老师教授课程
 	getTeam: function(classid, callback) {
-		var sql = "select teacher.name as teacherName, curriculum.name as curriculumName, curriculum.introduce from teacher, class, curriculum where class.id = ? and teacher.classid = class.id and curriculum.teacherid = teacher.id;";
+		var sql = "select * from teacher where classid = ?;";
 		db.exec(sql, classid, function(err, rows) {
 			if (err) {
 				callback(err);
@@ -42,9 +42,9 @@ module.exports = {
 		})
 	},
 	// 布置作业
-	addAssignment: function(content, userid, classid, callback) {
-		var sql = "insert into assignment(content, userid, classid, date) values(?,?,?,now());";
-		db.exec(sql, [content, userid, classid], function(err) {
+	addAssignment: function(content, userid, classid, assignmentCurriculumid, callback) {
+		var sql = "insert into assignment(content, userid, classid, assignmentCurriculumid, date) values(?,?,?,?,now());";
+		db.exec(sql, [content, userid, classid, assignmentCurriculumid], function(err) {
 			if (err) {
 				callback(err);
 			}
@@ -52,9 +52,9 @@ module.exports = {
 		});
 	},
 	// 查看往期作业
-	getAllAssignment: function(userid, callback) {
-		var sql = "select * from assignment where userid = ? order by date desc;";
-		db.exec(sql, userid, function(err, rows) {
+	getAllAssignment: function(userid, curriculumId, callback) {
+		var sql = "select * from assignment where userid = ? and assignmentCurriculumid = ? order by date desc;";
+		db.exec(sql, [userid, curriculumId], function(err, rows) {
 			if (err) {
 				callback(err);
 			}
@@ -103,7 +103,7 @@ module.exports = {
 	},
 	// 上传课程资源
 	uploadResources: function(url, resid, callback) {
-		var sql = 'update curriculumresources set url = ? where id = ?';
+		var sql = "update curriculumresources set url = ? where id = ?;";
 		db.exec(sql, [url, resid], function(err) {
 			if (err) {
 				callback(err);
@@ -111,4 +111,14 @@ module.exports = {
 			callback(err);
 		});
 	},
+	// 删除课程资源
+	deleteResources: function(resid, callback) {
+		var sql = "delete from curriculumresources where id = ?;";
+		db.exec(sql, resid, function(err) {
+			if (err) {
+				callback(err);
+			}
+			callback(err);
+		});
+	}
 }

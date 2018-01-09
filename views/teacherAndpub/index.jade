@@ -42,6 +42,12 @@ block modal
             select(name='assignmentClass', class='form-control')
               each classitem in classData
                 option(value= classitem.classid)= classitem.classname
+        .form-group
+          label.col-sm-2.control-label 所属课程
+          .col-sm-10
+            select(name='assignmentCurriculum', class='form-control')
+              each curriculumitem in curriculumData
+                option(value= curriculumitem.id)= curriculumitem.name
     .clear
 
 block leftnav
@@ -91,8 +97,13 @@ block leftnav
               ul.nav-second-level.nav(aria-expanded='true')
                 li.add-assignment
                   a(href='javascript: void(0);') 布置作业
-                li.assignment-content
+                li
                   a(href='javascript: void(0);') 查看已布置作业
+                    span.fa.arrow
+                  ul.nav-second-level.nav(aria-expanded='true')
+                    each curriculumitem in curriculumData
+                      li.assignment-content(data-curriculumid= curriculumitem.id)
+                        a(href='javascript: void(0);')= curriculumitem.name
             li
               a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag

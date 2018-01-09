@@ -25,7 +25,7 @@
 			.panel-heading 课程资源列表
 			.panel-body
 				- if (resourcesList.length > 0)
-					table.table.table-striped
+					table.table
 						thead
 							tr
 								th #
@@ -57,8 +57,11 @@
 										td 已上传
 										td
 											a(href= resourcesItem.url, class='btn btn-default', target='_blank') 下载
-									td
-										button(class='btn btn-default') 删除
+									- if (usertype == 1)
+										td
+											button.btn.btn-default.btn-delresources(data-resid= resourcesItem.id) 删除
+									- else
+										td
 				- else
 					.no-datacon
 						.no-data

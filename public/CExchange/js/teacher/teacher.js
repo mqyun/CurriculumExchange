@@ -92,9 +92,11 @@ $(document).on('click', '.add-assignment', function() {
 	showModal('布置作业', $('.add-assignment-modal'), '确定', '取消', function() {
 		var assignmentContent = $("textarea[name='assignmentContent']").val();
 		var assignmentClass = $("select[name='assignmentClass']").val();
+		var assignmentCurriculum = $('select[name="assignmentCurriculum"]').val();
 		var data = {
 			'assignmentContent': assignmentContent,
-			'assignmentClass': assignmentClass
+			'assignmentClass': assignmentClass,
+			'assignmentCurriculum': assignmentCurriculum
 		}
 		if (!validationAssignmentInput(assignmentContent)) {
 			showTips('warning', 'Warning!', '请填写布置作业的内容');
@@ -123,7 +125,11 @@ $(document).on('click', '.add-assignment', function() {
 // 查看已布置作业
 $(document).on('click', '.assignment-content', function() {
 	$('.main-content').html('');
-	getAssignmentCon();
+	var curriculumId = $(this).data('curriculumid');
+	var data = {
+		'curriculumId': curriculumId
+	}
+	getAssignmentCon(data);
 });
 
 // 发布公告
@@ -203,6 +209,21 @@ $(document).on('click', '.btn-addResources', function() {
   }
 });
 
+// 删除课程资源
+$(document).on('click', '.btn-delresources', function() {
+	var thisBtn = $(this);
+	var resId = thisBtn.data('resid');
+	var data = {
+		'resid': resId
+	}
+	ajaxPost('/teachermanage/deleteresources', data, function(result) {
+		if (result.success) {
+			showTips('success', 'Success!', result.success);
+			thisBtn.parents('tr').remove();
+		}
+	});
+});
+
 // 上传资源验证
 $(document).on('click', '.btn-uploadResources', function() {
 	if ($(this).prev().val() == '') {
@@ -272,8 +293,8 @@ function validationAssignmentInput(resourcesName) {
 }
 
 // 请求已布置作业
-function getAssignmentCon() {
-	ajaxPost('/teachermanage/assignmentcon', {}, function(result) {
+function getAssignmentCon(data) {
+	ajaxPost('/teachermanage/assignmentcon', data, function(result) {
 		if (result.success) {
 			$('.main-content').append(result.view);
 		}

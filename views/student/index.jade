@@ -26,6 +26,16 @@ block leftnav
                     = curriculumitem.name
             li
               a(href='javascript: void(0);', aria-expanded='true')
+                i.icon-folder-alt
+                |  我的作业
+                span.fa.arrow
+              ul.nav-second-level.nav(aria-expanded='true')
+                each curriculumitem in curriculumData
+                  li.student-myassignment(data-curriculumid= curriculumitem.id)
+                    a(href='javascript: void(0);', aria-expanded='true')
+                      = curriculumitem.name
+            li
+              a(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  课程资源
                 span.fa.arrow
