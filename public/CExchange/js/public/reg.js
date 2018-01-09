@@ -1,5 +1,6 @@
 $(function() {
   $("input[name='introduce']").parents('.form-group').hide();
+  localStorage.clear();
 });
 
 // 教师学生注册切换

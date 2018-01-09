@@ -1,9 +1,11 @@
 $(function() {
-  $('.student-myclass').click();
+  
 });
 
 // 学生端我的班级
 $(document).on('click', '.student-myclass', function() {
+  var classid = $('.student-myclass').index(this);
+	setBtn2('.student-myclass', classid);
   $('.main-content').html('');
   var classId = $(this).data('classid');
   var className = $(this).text();
@@ -15,6 +17,8 @@ $(document).on('click', '.student-myclass', function() {
 
 // 学生端我的课程
 $(document).on('click', '.student-mycurriculum', function() {
+  var classid = $('.student-mycurriculum').index(this);
+	setBtn2('.student-mycurriculum', classid);
   var curriculumId = $(this).data('curriculumid');
 	var data = {
 		'curriculumId': curriculumId
@@ -25,6 +29,8 @@ $(document).on('click', '.student-mycurriculum', function() {
 
 // 学生端我的作业
 $(document).on('click', '.student-myassignment', function() {
+  var classid = $('.student-myassignment').index(this);
+	setBtn2('.student-myassignment', classid);
   var curriculumId = $(this).data('curriculumid');
   var classId = $('.student-myclass').eq(0).data('classid');
   var curriculumName = $(this).text();
@@ -43,6 +49,8 @@ $(document).on('click', '.student-myassignment', function() {
 
 // 学生端课程资源
 $(document).on('click', '.student-resources', function() {
+  var classid = $('.student-resources').index(this);
+	setBtn2('.student-resources', classid);
   var curriculumId = $(this).data('curriculumid');
   var curriculumName = $(this).text();
   var data = {

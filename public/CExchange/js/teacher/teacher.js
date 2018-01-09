@@ -11,13 +11,13 @@ $(function() {
 				$(this).click();
 			}
 		});
-	} else {
-		$('.manage-class').click();
 	}
 });
 
 // 班级管理
 $(document).on('click', '.manage-class', function() {
+	var classid = $('.manage-class').index(this);
+	setBtn('.manage-class', classid);
 	$('.main-content').html('');
 	var classId = $(this).data('classid');
 	var className = $(this).text();
@@ -78,6 +78,8 @@ $(document).on('click', '.add-curriculum', function() {
 
 // 查看课程详情
 $(document).on('click', '.class-content', function() {
+	var classid = $('.class-content').index(this);
+	setBtn('.class-content', classid);
 	var curriculumId = $(this).data('curriculumid');
 	var data = {
 		'curriculumId': curriculumId
@@ -124,6 +126,8 @@ $(document).on('click', '.add-assignment', function() {
 
 // 查看已布置作业
 $(document).on('click', '.assignment-content', function() {
+	var classid = $('.assignment-content').index(this);
+	setBtn('.assignment-content', classid);
 	$('.main-content').html('');
 	var curriculumId = $(this).data('curriculumid');
 	var data = {
@@ -168,12 +172,16 @@ $(document).on('click', '.add-notice', function() {
 
 // 查看已发布公告
 $(document).on('click', '.notice-content', function() {
+	var classid = $('.notice-content').index(this);
+	setBtn('.notice-content', classid);
 	$('.main-content').html('');
 	getNoticeCon();
 });
 
 // 查看课程资源
 $(document).on('click', '.resources-content', function() {
+	var classid = $('.resources-content').index(this);
+	setBtn('.resources-content', classid);
 	$('.main-content').html('');
   var curriculumId = $(this).data('curriculumid');
   var curriculumName = $(this).text();

@@ -92,3 +92,12 @@ function showModal(tit, content, ok, cancel, okcallback, cancelcallback) {
     $('#public-modal').hide();
   });
 }
+
+function setBtn(classname, classid) {
+  localStorage.setItem('classname', classname);
+  localStorage.setItem('classid', classid);
+}
+function setBtn2(classname, classid) {
+  localStorage.setItem('classname2', classname);
+  localStorage.setItem('classid2', classid);
+}

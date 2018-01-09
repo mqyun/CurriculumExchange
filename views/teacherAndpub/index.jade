@@ -56,7 +56,7 @@ block leftnav
       .nano-content
         ul#menu.metisMenu.nav
           li.active
-            a(href='javascript: void(0);', aria-expanded='true')
+            a.leftmenuli(href='javascript: void(0);', aria-expanded='true')
               i.icon-home
               |  班级管理
               span.fa.arrow
@@ -65,7 +65,7 @@ block leftnav
                 li.manage-class(data-classid= classitem.classid)
                   a(href='javascript: void(0);')= classitem.classname
           li
-            a(href='javascript: void(0);', aria-expanded='true')
+            a.leftmenuli(href='javascript: void(0);', aria-expanded='true')
               i.icon-folder-alt
               |  课程管理
               span.fa.arrow
@@ -81,7 +81,7 @@ block leftnav
                     li.class-content(data-curriculumid= curriculumitem.id)
                       a(href='javascript: void(0);')= curriculumitem.name
             li
-              a.resourcesTitLi(href='javascript: void(0);', aria-expanded='true')
+              a.leftmenuli.resourcesTitLi(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  课程资源
                 span.fa.arrow
@@ -90,7 +90,7 @@ block leftnav
                   li.resources-content(data-curriculumid= curriculumitem.id)
                     a(href='javascript: void(0);')= curriculumitem.name
             li
-              a(href='javascript: void(0);', aria-expanded='true')
+              a.leftmenuli(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  作业 
                 span.fa.arrow
@@ -105,7 +105,7 @@ block leftnav
                       li.assignment-content(data-curriculumid= curriculumitem.id)
                         a(href='javascript: void(0);')= curriculumitem.name
             li
-              a(href='javascript: void(0);', aria-expanded='true')
+              a.leftmenuli(href='javascript: void(0);', aria-expanded='true')
                 i.icon-handbag
                 |  公告 
                 span.fa.arrow
@@ -120,3 +120,4 @@ block content
 
 block js
   script(src='/CExchange/js/teacher/teacher.js')
+  script(src='/CExchange/js/teacher/teacherload.js')

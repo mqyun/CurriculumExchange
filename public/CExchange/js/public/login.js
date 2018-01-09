@@ -4,6 +4,7 @@ $(function() {
   if (isFromTeacherReg) {
     $('.switch').click();
   }
+  localStorage.clear();
 });
 
 // 教师学生登录切换
